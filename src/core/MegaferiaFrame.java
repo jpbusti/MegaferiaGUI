@@ -5,19 +5,24 @@
 package core;
 
 import com.formdev.flatlaf.FlatDarkLaf;
+import java.util.ArrayList;
 import javax.swing.UIManager;
 
 /**
  *
- * @author Lab6k
+ * @author jjlora
+ * @author edangulo
  */
 public class MegaferiaFrame extends javax.swing.JFrame {
 
+    private ArrayList<Stand> stands;
+    
     /**
      * Creates new form MegaferiaFrame
      */
     public MegaferiaFrame() {
         initComponents();
+        this.stands = new ArrayList<>();
     }
 
     /**
@@ -154,6 +159,11 @@ public class MegaferiaFrame extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         jButton1.setText("Crear");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 280, 90, 40));
 
         jTabbedPane1.addTab("Stand", jPanel2);
@@ -1077,6 +1087,14 @@ public class MegaferiaFrame extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_jRadioButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        long id = Long.parseLong(jTextField2.getText());
+        double price = Double.parseDouble(jTextField1.getText());
+        
+        stands.add(new Stand(id, price));
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
