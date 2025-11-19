@@ -2,9 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package core;
+package core.views;
 
 import com.formdev.flatlaf.FlatDarkLaf;
+import core.models.Audiobook;
+import core.models.Author;
+import core.models.Book;
+import core.models.DigitalBook;
+import core.models.Manager;
+import core.models.Narrator;
+import core.models.PrintedBook;
+import core.models.Publisher;
+import core.models.Stand;
 import java.util.ArrayList;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
@@ -16,12 +25,12 @@ import javax.swing.table.DefaultTableModel;
  */
 public class MegaferiaFrame extends javax.swing.JFrame {
 
-    private ArrayList<Stand> stands;
-    private ArrayList<Author> authors;
-    private ArrayList<Manager> managers;
-    private ArrayList<Narrator> narrators;
-    private ArrayList<Publisher> publishers;
-    private ArrayList<Book> books;
+//    private ArrayList<Stand> stands;
+//    private ArrayList<Author> authors;
+//    private ArrayList<Manager> managers;
+//    private ArrayList<Narrator> narrators;
+//    private ArrayList<Publisher> publishers;
+//    private ArrayList<Book> books;
     
     /**
      * Creates new form MegaferiaFrame
