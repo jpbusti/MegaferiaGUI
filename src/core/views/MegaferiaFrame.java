@@ -1,10 +1,13 @@
+package core.views;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package core.views;
-
-import com.formdev.flatlaf.FlatDarkLaf;
+import core.controllers.PersonController;
+import core.controllers.PublisherController;
+import core.controllers.StandController;
+import core.controllers.utils.Response;
 import core.models.Audiobook;
 import core.models.Author;
 import core.models.Book;
@@ -15,7 +18,6 @@ import core.models.PrintedBook;
 import core.models.Publisher;
 import core.models.Stand;
 import java.util.ArrayList;
-import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -25,25 +27,20 @@ import javax.swing.table.DefaultTableModel;
  */
 public class MegaferiaFrame extends javax.swing.JFrame {
 
-//    private ArrayList<Stand> stands;
-//    private ArrayList<Author> authors;
-//    private ArrayList<Manager> managers;
-//    private ArrayList<Narrator> narrators;
-//    private ArrayList<Publisher> publishers;
-//    private ArrayList<Book> books;
-    
     /**
      * Creates new form MegaferiaFrame
      */
+    private StandController standController;
+    private PersonController personController;
+    private PublisherController publisherController;
+
     public MegaferiaFrame() {
         initComponents();
         setLocationRelativeTo(null);
-        this.stands = new ArrayList<>();
-        this.authors = new ArrayList<>();
-        this.managers = new ArrayList<>();
-        this.narrators = new ArrayList<>();
-        this.publishers = new ArrayList<>();
-        this.books = new ArrayList<>();
+        this.standController = new StandController();
+        this.personController = new PersonController();
+        this.publisherController = new PublisherController();
+
     }
 
     /**
@@ -1325,7 +1322,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
             jTextField15.setEnabled(false);
             jTextField16.setEnabled(true);
             jComboBox6.setEnabled(true);
-            
+
             jComboBox4.removeAllItems();
             jComboBox4.addItem("Seleccione uno...");
             jComboBox4.addItem("MP3");
@@ -1365,7 +1362,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
             jTextField15.setEnabled(false);
             jTextField16.setEnabled(false);
             jComboBox6.setEnabled(false);
-            
+
             jComboBox4.removeAllItems();
             jComboBox4.addItem("Seleccione uno...");
             jComboBox4.addItem("Pasta dura");
@@ -1382,7 +1379,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
             jTextField15.setEnabled(true);
             jTextField16.setEnabled(false);
             jComboBox6.setEnabled(false);
-            
+
             jComboBox4.removeAllItems();
             jComboBox4.addItem("Seleccione uno...");
             jComboBox4.addItem("EPUB");
@@ -1393,47 +1390,90 @@ public class MegaferiaFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        long id = Long.parseLong(jTextField2.getText());
-        double price = Double.parseDouble(jTextField1.getText());
-        
-        this.stands.add(new Stand(id, price));
-        
-        jComboBox7.addItem("" + id);
+        String idStr = jTextField2.getText();
+        String priceStr = jTextField1.getText();
+
+        Response response = standController.createStand(idStr, priceStr);
+
+        if (response.getStatus() >= 500) {
+            javax.swing.JOptionPane.showMessageDialog(this, response.getMessage(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        } else if (response.getStatus() >= 400) {
+            javax.swing.JOptionPane.showMessageDialog(this, response.getMessage(), "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, response.getMessage(), "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+
+            jTextField2.setText("");
+            jTextField1.setText("");
+
+            // Nota: Más adelante haremos un método para actualizar todos los combos/tablas
+            // Por ahora, puedes actualizar el combo manual si lo deseas, o esperar al patrón Observador (Bonus)
+            // jComboBox7.addItem(idStr); <--- Esto lo moveremos luego
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        long id = Long.parseLong(jTextField3.getText());
-        String firstname = jTextField4.getText();
+        String id = jTextField3.getText();
+        String name = jTextField4.getText();
         String lastname = jTextField5.getText();
-        
-        this.authors.add(new Author(id, firstname, lastname));
-        
-        jComboBox3.addItem(id + " - " + firstname + " " + lastname);
-        jComboBox10.addItem(id + " - " + firstname + " " + lastname);
+
+        Response response = personController.createAuthor(id, name, lastname);
+
+        if (response.getStatus() >= 500) {
+            javax.swing.JOptionPane.showMessageDialog(this, response.getMessage(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        } else if (response.getStatus() >= 400) {
+            javax.swing.JOptionPane.showMessageDialog(this, response.getMessage(), "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, response.getMessage(), "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            // Limpiar campos
+            jTextField3.setText("");
+            jTextField4.setText("");
+            jTextField5.setText("");
+            refreshAuthorCombos();
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
         // TODO add your handling code here:
-        long id = Long.parseLong(jTextField3.getText());
-        String firstname = jTextField4.getText();
+        String id = jTextField3.getText();
+        String name = jTextField4.getText();
         String lastname = jTextField5.getText();
-        
-        this.managers.add(new Manager(id, firstname, lastname));
-        
-        jComboBox1.addItem(id + " - " + firstname + " " + lastname);
+
+        Response response = personController.createManager(id, name, lastname);
+
+        if (response.getStatus() >= 500) {
+            javax.swing.JOptionPane.showMessageDialog(this, response.getMessage(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        } else if (response.getStatus() >= 400) {
+            javax.swing.JOptionPane.showMessageDialog(this, response.getMessage(), "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, response.getMessage(), "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            jTextField3.setText("");
+            jTextField4.setText("");
+            jTextField5.setText("");
+            refreshManagerCombos();
+        }
     }//GEN-LAST:event_jButton16ActionPerformed
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
         // TODO add your handling code here:
-        long id = Long.parseLong(jTextField3.getText());
-        String firstname = jTextField4.getText();
+        String id = jTextField3.getText();
+        String name = jTextField4.getText();
         String lastname = jTextField5.getText();
-        
-        this.narrators.add(new Narrator(id, firstname, lastname));
-        
-        jComboBox6.addItem(id + " - " + firstname + " " + lastname);
+
+        Response response = personController.createNarrator(id, name, lastname);
+
+        if (response.getStatus() >= 500) {
+            javax.swing.JOptionPane.showMessageDialog(this, response.getMessage(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        } else if (response.getStatus() >= 400) {
+            javax.swing.JOptionPane.showMessageDialog(this, response.getMessage(), "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, response.getMessage(), "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            jTextField3.setText("");
+            jTextField4.setText("");
+            jTextField5.setText("");
+            refreshNarratorCombos();
+        }
+
     }//GEN-LAST:event_jButton17ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -1441,21 +1481,38 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         String nit = jTextField6.getText();
         String name = jTextField7.getText();
         String address = jTextField8.getText();
-        String[] managerData = jComboBox1.getItemAt(jComboBox1.getSelectedIndex()).split(" - ");
-        
-        long managerId = Long.parseLong(managerData[0]);
-        
-        Manager manager = null;
-        for (Manager manag : this.managers) {
-            if (manag.getId() == managerId) {
-                manager = manag;
-            }
+
+        // Obtener el ID del gerente del ComboBox
+        String managerSelection = (String) jComboBox1.getSelectedItem();
+
+        // Validación de UI rápida
+        if (managerSelection == null || managerSelection.equals("Seleccione uno...")) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Debe seleccionar un gerente.", "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+            return;
         }
-        
-        this.publishers.add(new Publisher(nit, name, address, manager));
-        
-        jComboBox5.addItem(name + " (" + nit + ")");
-        jComboBox8.addItem(name + " (" + nit + ")");
+
+        // El combo tiene formato "123 - Juan Perez". Cortamos para obtener solo "123".
+        String managerIdStr = managerSelection.split(" - ")[0];
+
+        // Llamar al controlador
+        Response response = publisherController.createPublisher(nit, name, address, managerIdStr);
+
+        if (response.getStatus() >= 500) {
+            javax.swing.JOptionPane.showMessageDialog(this, response.getMessage(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        } else if (response.getStatus() >= 400) {
+            javax.swing.JOptionPane.showMessageDialog(this, response.getMessage(), "Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, response.getMessage(), "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+
+            // Limpiar campos
+            jTextField6.setText("");
+            jTextField7.setText("");
+            jTextField8.setText("");
+            jComboBox1.setSelectedIndex(0); // Reiniciar el combo de gerentes
+
+            // Actualizar los combos de editoriales en las otras pestañas
+            refreshPublisherCombos();
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -1479,7 +1536,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         String format = jComboBox4.getItemAt(jComboBox4.getSelectedIndex());
         double value = Double.parseDouble(jTextField12.getText());
         String publisherData = jComboBox5.getItemAt(jComboBox5.getSelectedIndex());
-        
+
         ArrayList<Author> authors = new ArrayList<>();
         for (String authorData : authorsData) {
             long authorId = Long.parseLong(authorData.split(" - ")[0]);
@@ -1489,20 +1546,20 @@ public class MegaferiaFrame extends javax.swing.JFrame {
                 }
             }
         }
-        
+
         String publisherNit = publisherData.split(" ")[1].replace("(", "").replace(")", "");
-        
+
         Publisher publisher = null;
         for (Publisher publish : this.publishers) {
             if (publish.getNit().equals(publisherNit)) {
                 publisher = publish;
             }
         }
-        
+
         if (jRadioButton1.isSelected()) {
             int pages = Integer.parseInt(jTextField13.getText());
             int copies = Integer.parseInt(jTextField14.getText());
-            
+
             this.books.add(new PrintedBook(title, authors, isbn, genre, format, value, publisher, pages, copies));
         }
         if (jRadioButton2.isSelected()) {
@@ -1516,16 +1573,16 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         if (jRadioButton3.isSelected()) {
             int duration = Integer.parseInt(jTextField16.getText());
             String[] narratorData = jComboBox6.getItemAt(jComboBox6.getSelectedIndex()).split(" - ");
-            
+
             long narratorId = Long.parseLong(narratorData[0]);
-            
+
             Narrator narrator = null;
             for (Narrator narrat : this.narrators) {
                 if (narrat.getId() == narratorId) {
                     narrator = narrat;
                 }
             }
-            
+
             this.books.add(new Audiobook(title, authors, isbn, genre, format, value, publisher, duration, narrator));
         }
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -1558,7 +1615,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         String[] standIds = jTextArea3.getText().split("\n");
         String[] publishersData = jTextArea1.getText().split("\n");
-        
+
         ArrayList<Stand> stands = new ArrayList<>();
         for (String standId : standIds) {
             for (Stand stand : this.stands) {
@@ -1567,7 +1624,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
                 }
             }
         }
-        
+
         ArrayList<Publisher> publishers = new ArrayList<>();
         for (String publisherData : publishersData) {
             String publisherNit = publisherData.split(" ")[1].replace("(", "").replace(")", "");
@@ -1577,7 +1634,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
                 }
             }
         }
-        
+
         for (Stand stand : stands) {
             for (Publisher publisher : publishers) {
                 stand.addPublisher(publisher);
@@ -1629,10 +1686,10 @@ public class MegaferiaFrame extends javax.swing.JFrame {
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
         // TODO add your handling code here:
         String search = jComboBox9.getItemAt(jComboBox9.getSelectedIndex());
-        
+
         DefaultTableModel model = (DefaultTableModel) jTable4.getModel();
         model.setRowCount(0);
-        
+
         if (search.equals("Libros Impresos")) {
             for (Book book : this.books) {
                 if (book instanceof PrintedBook printedBook) {
@@ -1667,7 +1724,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
             }
         }
         if (search.equals("Todos los Libros")) {
-            for (Book book : this.books) { 
+            for (Book book : this.books) {
                 String authors = book.getAuthors().get(0).getFullname();
                 for (int i = 1; i < book.getAuthors().size(); i++) {
                     authors += (", " + book.getAuthors().get(i).getFullname());
@@ -1689,18 +1746,18 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         String[] authorData = jComboBox10.getItemAt(jComboBox10.getSelectedIndex()).split(" - ");
         long authorId = Long.parseLong(authorData[0]);
-        
+
         Author author = null;
         for (Author auth : this.authors) {
             if (auth.getId() == authorId) {
                 author = auth;
             }
         }
-        
+
         DefaultTableModel model = (DefaultTableModel) jTable5.getModel();
         model.setRowCount(0);
-        
-        for (Book book : author.getBooks()) { 
+
+        for (Book book : author.getBooks()) {
             String authors = book.getAuthors().get(0).getFullname();
             for (int i = 1; i < book.getAuthors().size(); i++) {
                 authors += (", " + book.getAuthors().get(i).getFullname());
@@ -1720,11 +1777,11 @@ public class MegaferiaFrame extends javax.swing.JFrame {
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
         // TODO add your handling code here:
         String format = jComboBox11.getItemAt(jComboBox11.getSelectedIndex());
-        
+
         DefaultTableModel model = (DefaultTableModel) jTable5.getModel();
         model.setRowCount(0);
-        
-        for (Book book : this.books) { 
+
+        for (Book book : this.books) {
             if (book.getFormat().equals(format)) {
                 String authors = book.getAuthors().get(0).getFullname();
                 for (int i = 1; i < book.getAuthors().size(); i++) {
@@ -1756,32 +1813,60 @@ public class MegaferiaFrame extends javax.swing.JFrame {
                 authorsMax.add(author);
             }
         }
-        
+
         DefaultTableModel model = (DefaultTableModel) jTable6.getModel();
         model.setRowCount(0);
-        
+
         for (Author author : authorsMax) {
             model.addRow(new Object[]{author.getId(), author.getFullname(), maxPublishers});
         }
     }//GEN-LAST:event_jButton20ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        System.setProperty("flatlaf.useNativeLibrary", "false");
-        
-        try {
-            UIManager.setLookAndFeel(new FlatDarkLaf());
-        } catch (Exception ex) {
-            System.err.println("Failed to initialize LaF");
+    private void refreshAuthorCombos() {
+        jComboBox3.removeAllItems();
+        jComboBox10.removeAllItems();
+        jComboBox3.addItem("Seleccione uno...");
+        jComboBox10.addItem("Seleccione uno...");
+
+        for (Author author : personController.getAuthors()) {
+            String item = author.getId() + " - " + author.getFullname();
+            jComboBox3.addItem(item);
+            jComboBox10.addItem(item);
         }
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MegaferiaFrame().setVisible(true);
-            }
-        });
+    }
+
+    private void refreshManagerCombos() {
+        jComboBox1.removeAllItems();
+        jComboBox1.addItem("Seleccione uno...");
+
+        for (Manager manager : personController.getManagers()) {
+            String item = manager.getId() + " - " + manager.getFullname();
+            jComboBox1.addItem(item);
+        }
+    }
+
+    private void refreshNarratorCombos() {
+        jComboBox6.removeAllItems();
+        jComboBox6.addItem("Seleccione uno...");
+
+        for (Narrator narrator : personController.getNarrators()) {
+            String item = narrator.getId() + " - " + narrator.getFullname();
+            jComboBox6.addItem(item);
+        }
+    }
+
+    private void refreshPublisherCombos() {
+        jComboBox5.removeAllItems();
+        jComboBox5.addItem("Seleccione uno...");
+
+        jComboBox8.removeAllItems();
+        jComboBox8.addItem("Seleccione uno...");
+
+        for (Publisher pub : publisherController.getPublishers()) {
+            String item = pub.getName() + " (" + pub.getNit() + ")";
+            jComboBox5.addItem(item);
+            jComboBox8.addItem(item);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
