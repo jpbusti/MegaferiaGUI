@@ -6,19 +6,11 @@ package core.models.storage;
  */
 
 
-import core.models.Author;
-import core.models.Book;
-import core.models.Manager;
-import core.models.Narrator;
-import core.models.Publisher;
-import core.models.Stand;
+import core.models.*;
 import java.util.ArrayList;
 
-/**
- *
- * @author Juan
- */
-public class Storage {
+// Implementa la interfaz para cumplir DIP
+public class Storage implements IStorage {
     
     private static Storage instance;
     
@@ -29,7 +21,8 @@ public class Storage {
     private ArrayList<Publisher> publishers;
     private ArrayList<Book> books;
 
-    public Storage() {
+    // Constructor privado para Singleton
+    private Storage() {
         this.stands = new ArrayList<>();
         this.authors = new ArrayList<>();
         this.managers = new ArrayList<>();
@@ -45,31 +38,11 @@ public class Storage {
         return instance;
     }
 
-    public ArrayList<Stand> getStands() {
-        return stands;
-    }
-
-    public ArrayList<Author> getAuthors() {
-        return authors;
-    }
-
-    public ArrayList<Manager> getManagers() {
-        return managers;
-    }
-
-    public ArrayList<Narrator> getNarrators() {
-        return narrators;
-    }
-
-    public ArrayList<Publisher> getPublishers() {
-        return publishers;
-    }
-
-    public ArrayList<Book> getBooks() {
-        return books;
-    }
-    
-    
-    
+    @Override public ArrayList<Stand> getStands() { return stands; }
+    @Override public ArrayList<Author> getAuthors() { return authors; }
+    @Override public ArrayList<Manager> getManagers() { return managers; }
+    @Override public ArrayList<Narrator> getNarrators() { return narrators; }
+    @Override public ArrayList<Publisher> getPublishers() { return publishers; }
+    @Override public ArrayList<Book> getBooks() { return books; }
     
 }

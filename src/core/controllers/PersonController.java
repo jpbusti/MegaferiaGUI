@@ -9,10 +9,6 @@ import core.models.Person;
 import core.models.storage.Storage;
 import java.util.ArrayList;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 /**
  *
  * @author Juan
@@ -30,7 +26,6 @@ public class PersonController {
         if (!validation.getMessage().equals("OK")) {
             return validation;
         }
-
         long id = Long.parseLong(idStr);
         Author newAuthor = new Author(id, name, lastname);
         storage.getAuthors().add(newAuthor);
@@ -42,7 +37,6 @@ public class PersonController {
         if (!validation.getMessage().equals("OK")) {
             return validation;
         }
-
         long id = Long.parseLong(idStr);
         Manager newManager = new Manager(id, name, lastname);
         storage.getManagers().add(newManager);
@@ -54,24 +48,47 @@ public class PersonController {
         if (!validation.getMessage().equals("OK")) {
             return validation;
         }
-
         long id = Long.parseLong(idStr);
         Narrator newNarrator = new Narrator(id, name, lastname);
         storage.getNarrators().add(newNarrator);
         return new Response("Narrador creado exitosamente.", Status.CREATED);
     }
 
+    // Getters con copia para Encapsulamiento
     public ArrayList<Author> getAuthors() {
-        return storage.getAuthors();
+        return new ArrayList<>(storage.getAuthors());
     }
 
     public ArrayList<Manager> getManagers() {
-        return storage.getManagers();
-
+        return new ArrayList<>(storage.getManagers());
     }
 
     public ArrayList<Narrator> getNarrators() {
-        return storage.getNarrators();
+        return new ArrayList<>(storage.getNarrators());
+    }
+
+    // IMPORTANTE: Este método faltaba y es el que pide la vista ahora
+    public ArrayList<Author> getAuthorsWithMostBooksInDifferentPublishers() {
+        ArrayList<Author> allAuthors = storage.getAuthors();
+        ArrayList<Author> topAuthors = new ArrayList<>();
+        if (allAuthors.isEmpty()) return topAuthors;
+
+        int maxPublishers = -1;
+        // Lógica de negocio en el controlador, NO en la vista
+        for (Author a : allAuthors) {
+            int qty = a.getPublisherQuantity(); 
+            if (qty > maxPublishers) {
+                maxPublishers = qty;
+            }
+        }
+        if (maxPublishers > 0) {
+            for (Author a : allAuthors) {
+                if (a.getPublisherQuantity() == maxPublishers) {
+                    topAuthors.add(a);
+                }
+            }
+        }
+        return topAuthors;
     }
 
     private Response validateCommonData(String idStr, String name, String lastname) {
@@ -81,7 +98,6 @@ public class PersonController {
         } catch (NumberFormatException e) {
             return new Response("El ID debe ser numérico.", Status.BAD_REQUEST);
         }
-
         if (id < 0) {
             return new Response("El ID debe ser positivo.", Status.BAD_REQUEST);
         }
@@ -91,11 +107,9 @@ public class PersonController {
         if (name == null || name.trim().isEmpty() || lastname == null || lastname.trim().isEmpty()) {
             return new Response("El nombre y apellido son obligatorios.", Status.BAD_REQUEST);
         }
-
         if (personExists(id, storage.getAuthors())|| personExists(id, storage.getManagers()) || personExists(id, storage.getNarrators())) {
             return new Response("Ya existe una persona registrada con ese ID.", Status.BAD_REQUEST);
         }
-
         return new Response("OK", Status.OK);
     }
 

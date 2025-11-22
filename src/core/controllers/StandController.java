@@ -8,6 +8,7 @@ package core.controllers;
 
 import core.controllers.utils.Response;
 import core.controllers.utils.Status;
+import core.models.Publisher;
 import core.models.Stand;
 import core.models.storage.Storage;
 import java.util.ArrayList;
@@ -59,5 +60,56 @@ public class StandController {
     
     public ArrayList<Stand> getStands() {
         return Storage.getInstance().getStands();
+    }
+    
+    public Response assignStandsToPublishers(java.util.ArrayList<String> standIds, java.util.ArrayList<String> publisherNits) {
+        if (standIds == null || standIds.isEmpty()) {
+            return new Response("Debe seleccionar al menos un Stand.", Status.BAD_REQUEST);
+        }
+        if (publisherNits == null || publisherNits.isEmpty()) {
+            return new Response("Debe seleccionar al menos una Editorial.", Status.BAD_REQUEST);
+        }
+
+        java.util.ArrayList<Stand> selectedStands = new java.util.ArrayList<>();
+        Storage storage = Storage.getInstance();
+        
+        for (String idStr : standIds) {
+            try {
+                long id = Long.parseLong(idStr);
+                boolean found = false;
+                for (Stand s : storage.getStands()) {
+                    if (s.getId() == id) {
+                        selectedStands.add(s);
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) return new Response("El Stand con ID " + id + " no existe.", Status.BAD_REQUEST);
+            } catch (NumberFormatException e) {
+                return new Response("ID de Stand inválido: " + idStr, Status.BAD_REQUEST);
+            }
+        }
+
+        java.util.ArrayList<Publisher> selectedPublishers = new java.util.ArrayList<>();
+        for (String nit : publisherNits) {
+            boolean found = false;
+            for (Publisher p : storage.getPublishers()) {
+                if (p.getNit().equals(nit)) {
+                    selectedPublishers.add(p);
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) return new Response("La Editorial con NIT " + nit + " no existe.", Status.BAD_REQUEST);
+        }
+
+        for (Stand stand : selectedStands) {
+            for (Publisher publisher : selectedPublishers) {
+                stand.addPublisher(publisher);
+                publisher.addStand(stand);
+            }
+        }
+
+        return new Response("Compra de Stands registrada exitosamente.", Status.OK);
     }
 }

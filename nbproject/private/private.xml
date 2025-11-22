@@ -5,5 +5,19 @@
         <group>
             <file>file:/C:/Jefferson/MegaferiaGUI/src/core/MegaferiaFrame.java</file>
         </group>
+        <group name="Group 20240903-10:54:48">
+            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/controllers/utils/Response.java</file>
+            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/models/Stand.java</file>
+            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/controllers/PersonController.java</file>
+            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/main/Main.java</file>
+            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/controllers/StandController.java</file>
+            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/controllers/BookController.java</file>
+            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/models/Author.java</file>
+            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/models/Person.java</file>
+            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/controllers/utils/Status.java</file>
+            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/views/MegaferiaFrame.java</file>
+            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/models/storage/Storage.java</file>
+            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/controllers/PublisherController.java</file>
+        </group>
     </open-files>
 </project-private>
