@@ -1555,18 +1555,15 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
         Response response = null;
 
         if (rImpreso.isSelected()) {
-            // --- Libro Impreso ---
             String pages = txtNroPaginas.getText();
             String copies = txtNroEjemplares.getText();
             response = bookController.createPrintedBook(title, isbn, authorIds, publisherNit, priceStr, genre, format, pages, copies);
 
         } else if (rDigital.isSelected()) {
-            // --- Libro Digital ---
             String url = txtHipervinculo.getText();
             response = bookController.createDigitalBook(title, isbn, authorIds, publisherNit, priceStr, genre, format, url);
 
         } else if (rAudioLibro.isSelected()) {
-            // --- Audiolibro ---
             String duration = txtDuracion.getText();
 
             String narradorSel = "";
@@ -1586,7 +1583,6 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
             return;
         }
 
-        // 3. PROCESAR RESPUESTA
         if (response.getStatus() >= 500) {
             javax.swing.JOptionPane.showMessageDialog(this, response.getMessage(), "Error Crítico", javax.swing.JOptionPane.ERROR_MESSAGE);
         } else if (response.getStatus() >= 400) {
@@ -1649,9 +1645,8 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
     private void btnConsultarEditorialesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarEditorialesActionPerformed
         // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        model.setRowCount(0); // Limpiar tabla
+        model.setRowCount(0); 
 
-        // 2. Pedir datos al controlador y llenar filas
         for (Publisher publisher : publisherController.getPublishers()) {
             model.addRow(new Object[]{
                 publisher.getNit(),
@@ -1668,7 +1663,6 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
         DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
         model.setRowCount(0);
 
-        // 1. Agregar Autores
         for (Author author : personController.getAuthors()) {
             model.addRow(new Object[]{
                 author.getId(),
@@ -1740,8 +1734,6 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
         DefaultTableModel model = (DefaultTableModel) jTable5.getModel();
         model.setRowCount(0);
 
-        // Buscamos los libros DE ESE AUTOR ESPECÍFICO
-        // (Podríamos usar author.getBooks(), pero iteramos todos para ser consistentes con la tabla)
         for (Book book : bookController.getBooks()) {
             boolean loEscribio = false;
             for (Author a : book.getAuthors()) {
@@ -1752,11 +1744,8 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
             }
 
             if (loEscribio) {
-                // ... Copiar misma lógica de llenado de fila que en Show Libros ...
-                // Para ahorrar espacio, usa el mismo bloque de row creation
-                // Ojo: Aquí puedes copiar/pegar el bloque de model.addRow del punto 5
-                // adaptando las variables si es necesario.
-                addBookToTable(model, book); // Método helper sugerido abajo
+
+                addBookToTable(model, book);
             }
         }
     }//GEN-LAST:event_btnConsultarAutorActionPerformed
@@ -1974,47 +1963,9 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
         }
     }
 
-    private void addStandToPurchaseList() {
-        String selected = (String) cmbIDStands.getSelectedItem();
-        if (selected == null || selected.equals("Seleccione uno...")) {
-            return;
-        }
 
-        if (!jTextArea3.getText().contains(selected)) {
-            jTextArea3.append(selected + "\n");
-        }
-    }
 
-    private void removeStandFromPurchaseList() {
-        String selected = (String) cmbIDStands.getSelectedItem();
-        if (selected == null || selected.equals("Seleccione uno...")) {
-            return;
-        }
 
-        String currentText = jTextArea3.getText();
-        jTextArea3.setText(currentText.replace(selected + "\n", ""));
-    }
-
-    private void addPublisherToPurchaseList() {
-        String selected = (String) cmbEditorialesComprarStand.getSelectedItem();
-        if (selected == null || selected.equals("Seleccione uno...")) {
-            return;
-        }
-
-        if (!jTextArea1.getText().contains(selected)) {
-            jTextArea1.append(selected + "\n");
-        }
-    }
-
-    private void removePublisherFromPurchaseList() {
-        String selected = (String) cmbEditorialesComprarStand.getSelectedItem();
-        if (selected == null || selected.equals("Seleccione uno...")) {
-            return;
-        }
-
-        String currentText = jTextArea1.getText();
-        jTextArea1.setText(currentText.replace(selected + "\n", ""));
-    }
 
     private java.util.ArrayList<String> getSelectedStandIdsForPurchase() {
         java.util.ArrayList<String> ids = new java.util.ArrayList<>();
