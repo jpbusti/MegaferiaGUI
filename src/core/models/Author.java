@@ -5,25 +5,44 @@ package core.models;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-
+import core.models.Book;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 
 /**
  *
  * @author edangulo
  */
 public class Author extends Person {
+    private List<Book> books;
     
-    private ArrayList<Book> books;
+    public List<Book> getBooks() {
+        return books; // O new ArrayList<>(books) para encapsulamiento
+    }
+
 
     public Author(long id, String firstname, String lastname) {
         super(id, firstname, lastname);
         this.books = new ArrayList<>();
     }
-
-    public ArrayList<Book> getBooks() {
-        return books;
+    public int calculatePublisherQuantity() {
+        if (books == null || books.isEmpty()) {
+            return 0;
+        }
+        // Usamos un HashSet para asegurar que las editoriales sean únicas.
+        HashSet<String> uniquePublishers = new HashSet<>();
+        
+        for (Book book : this.books) {
+            // Asume que Book tiene un método getPublisher() que devuelve un Publisher
+            // y Publisher tiene un método getNit() que devuelve el identificador único.
+            if (book.getPublisher() != null) {
+                uniquePublishers.add(book.getPublisher().getNit());
+            }
+        }
+        return uniquePublishers.size();
     }
+    
     
     public int getBookQuantity() {
         return this.books.size();
@@ -42,11 +61,5 @@ public class Author extends Person {
         }
         return publishers.size();
     }
-
-    @Override
-    public Author clone() {
-        Author cloned = (Author) super.clone();
-        cloned.books = new ArrayList<>(this.books);
-        return cloned;
-    }
+    
 }
