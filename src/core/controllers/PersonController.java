@@ -6,16 +6,14 @@ import core.models.Author;
 import core.models.Manager;
 import core.models.Narrator;
 import core.models.Person;
+import core.models.storage.IStorage;
 import core.models.storage.Storage;
 import java.util.ArrayList;
+import java.util.Collections;
 
-/**
- *
- * @author Juan
- */
 public class PersonController {
 
-    private Storage storage;
+    private IStorage storage;
 
     public PersonController() {
         this.storage = Storage.getInstance();
@@ -54,27 +52,39 @@ public class PersonController {
         return new Response("Narrador creado exitosamente.", Status.CREATED);
     }
 
-    // Getters con copia para Encapsulamiento
     public ArrayList<Author> getAuthors() {
-        return new ArrayList<>(storage.getAuthors());
+        ArrayList<Author> copies = new ArrayList<>();
+        for (Author a : storage.getAuthors()) {
+            copies.add(a.clone());
+        }
+        Collections.sort(copies, (p1, p2) -> Long.compare(p1.getId(), p2.getId()));
+        return copies;
     }
 
     public ArrayList<Manager> getManagers() {
-        return new ArrayList<>(storage.getManagers());
+        ArrayList<Manager> copies = new ArrayList<>();
+        for (Manager m : storage.getManagers()) {
+            copies.add(m.clone());
+        }
+        Collections.sort(copies, (p1, p2) -> Long.compare(p1.getId(), p2.getId()));
+        return copies;
     }
 
     public ArrayList<Narrator> getNarrators() {
-        return new ArrayList<>(storage.getNarrators());
+        ArrayList<Narrator> copies = new ArrayList<>();
+        for (Narrator n : storage.getNarrators()) {
+            copies.add(n.clone());
+        }
+        Collections.sort(copies, (p1, p2) -> Long.compare(p1.getId(), p2.getId()));
+        return copies;
     }
 
-    // IMPORTANTE: Este método faltaba y es el que pide la vista ahora
     public ArrayList<Author> getAuthorsWithMostBooksInDifferentPublishers() {
         ArrayList<Author> allAuthors = storage.getAuthors();
         ArrayList<Author> topAuthors = new ArrayList<>();
         if (allAuthors.isEmpty()) return topAuthors;
 
         int maxPublishers = -1;
-        // Lógica de negocio en el controlador, NO en la vista
         for (Author a : allAuthors) {
             int qty = a.getPublisherQuantity(); 
             if (qty > maxPublishers) {
@@ -84,10 +94,11 @@ public class PersonController {
         if (maxPublishers > 0) {
             for (Author a : allAuthors) {
                 if (a.getPublisherQuantity() == maxPublishers) {
-                    topAuthors.add(a);
+                    topAuthors.add(a.clone());
                 }
             }
         }
+        Collections.sort(topAuthors, (p1, p2) -> Long.compare(p1.getId(), p2.getId()));
         return topAuthors;
     }
 

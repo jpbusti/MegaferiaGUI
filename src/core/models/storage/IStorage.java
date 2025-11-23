@@ -8,7 +8,12 @@ package core.models.storage;
  *
  * @author Juan
  */
-import core.models.*;
+import core.models.Author;
+import core.models.Book;
+import core.models.Manager;
+import core.models.Narrator;
+import core.models.Publisher;
+import core.models.Stand;
 import java.util.ArrayList;
 
 public interface IStorage {

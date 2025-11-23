@@ -36,5 +36,9 @@ public class DigitalBook extends Book {
     public String getHyperlink() {
         return hyperlink;
     }
-    
+
+    @Override
+    public DigitalBook clone() {
+        return (DigitalBook) super.clone();
+    }
 }

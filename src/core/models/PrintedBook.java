@@ -30,5 +30,9 @@ public class PrintedBook extends Book {
     public int getCopies() {
         return copies;
     }
-    
+
+    @Override
+    public PrintedBook clone() {
+        return (PrintedBook) super.clone();
+    }
 }

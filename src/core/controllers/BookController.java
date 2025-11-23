@@ -9,25 +9,22 @@ import core.models.DigitalBook;
 import core.models.Narrator;
 import core.models.PrintedBook;
 import core.models.Publisher;
+import core.models.storage.IStorage;
 import core.models.storage.Storage;
-import java.beans.PropertyChangeSupport; // IMPORTANTE: Faltaba esto
+import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
+import java.util.Collections;
 
-/**
- *
- * @author Juan
- */
 public class BookController {
     
-    private Storage storage;
-    private PropertyChangeSupport support; // IMPORTANTE: Faltaba esto
+    private IStorage storage;
+    private PropertyChangeSupport support;
 
     public BookController() {
         this.storage = Storage.getInstance();
-        this.support = new PropertyChangeSupport(this); // IMPORTANTE: Inicialización
+        this.support = new PropertyChangeSupport(this);
     }
     
-    // IMPORTANTE: Este es el método que Java te está pidiendo y no encontraba
     public void addPropertyChangeListener(java.beans.PropertyChangeListener pcl) {
         support.addPropertyChangeListener(pcl);
     }
@@ -46,8 +43,8 @@ public class BookController {
         if (!isbn.matches("\\d{3}-\\d-\\d{2}-\\d{6}-\\d")) {
             return new Response("El ISBN debe tener el formato XXX-X-XX-XXXXXX-X", Status.BAD_REQUEST);
         }
-        // Usamos getBooks() que devuelve copia segura
-        for (Book b : getBooks()) {
+        
+        for (Book b : storage.getBooks()) {
             if (b.getIsbn().equals(isbn)) {
                 return new Response("Ya existe un libro registrado con ese ISBN.", Status.BAD_REQUEST);
             }
@@ -78,7 +75,6 @@ public class BookController {
             PrintedBook book = new PrintedBook(title, authors, isbn, genre, format, price, publisher, pages, copies);
             storage.getBooks().add(book);
             
-            // Notificamos a la vista (Patrón Observer)
             support.firePropertyChange("NewBook", null, book);
 
             return new Response("Libro Impreso creado exitosamente.", Status.CREATED);
@@ -103,7 +99,6 @@ public class BookController {
         }
         storage.getBooks().add(book);
         
-        // Notificamos a la vista (Patrón Observer)
         support.firePropertyChange("NewBook", null, book);
 
         return new Response("Libro Digital creado exitosamente.", Status.CREATED);
@@ -129,7 +124,6 @@ public class BookController {
             Audiobook book = new Audiobook(title, authors, isbn, genre, format, price, publisher, duration, narrator);
             storage.getBooks().add(book);
             
-            // Notificamos a la vista (Patrón Observer)
             support.firePropertyChange("NewBook", null, book);
 
             return new Response("Audiolibro creado exitosamente.", Status.CREATED);
@@ -164,20 +158,38 @@ public class BookController {
         }
         return null;
     }
+
     public ArrayList<Book> getBooksByAuthor(long authorId){
-         ArrayList<Book> result = new ArrayList<>();
-    for (Book b : storage.getBooks()) {
-         for (Author a : b.getAuthors()) {
-             if (a.getId() == authorId) {
-                 result.add(b);
-                 break;
-             }
-         }
-    }
+        ArrayList<Book> result = new ArrayList<>();
+        for (Book b : storage.getBooks()) {
+            for (Author a : b.getAuthors()) {
+                if (a.getId() == authorId) {
+                    result.add(b.clone());
+                    break;
+                }
+            }
+        }
+        Collections.sort(result, (b1, b2) -> b1.getIsbn().compareTo(b2.getIsbn()));
         return result;
-}
-    // IMPORTANTE: Retornar copia para Encapsulamiento
+    }
+
+    public ArrayList<Book> getBooksByFormat(String format) {
+        ArrayList<Book> result = new ArrayList<>();
+        for (Book b : storage.getBooks()) {
+            if (b.getFormat() != null && b.getFormat().equals(format)) {
+                result.add(b.clone());
+            }
+        }
+        Collections.sort(result, (b1, b2) -> b1.getIsbn().compareTo(b2.getIsbn()));
+        return result;
+    }
+
     public ArrayList<Book> getBooks() { 
-        return new ArrayList<>(storage.getBooks()); 
+        ArrayList<Book> copies = new ArrayList<>();
+        for (Book b : storage.getBooks()) {
+            copies.add(b.clone());
+        }
+        Collections.sort(copies, (b1, b2) -> b1.getIsbn().compareTo(b2.getIsbn()));
+        return copies;
     }
 }

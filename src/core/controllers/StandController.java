@@ -1,23 +1,21 @@
 package core.controllers;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-
 import core.controllers.utils.Response;
 import core.controllers.utils.Status;
 import core.models.Publisher;
 import core.models.Stand;
+import core.models.storage.IStorage;
 import core.models.storage.Storage;
 import java.util.ArrayList;
+import java.util.Collections;
 
-/**
- *
- * @author Juan
- */
 public class StandController {
+    
+    private IStorage storage;
+
+    public StandController() {
+        this.storage = Storage.getInstance();
+    }
     
     public Response createStand(String idStr, String priceStr) {
         try {
@@ -41,7 +39,6 @@ public class StandController {
                 return new Response("El precio debe ser superior a 0.", Status.BAD_REQUEST);
             }
 
-            Storage storage = Storage.getInstance();
             for (Stand stand : storage.getStands()) {
                 if (stand.getId() == id) {
                     return new Response("Ya existe un Stand con ese ID.", Status.BAD_REQUEST);
@@ -59,10 +56,15 @@ public class StandController {
     }
     
     public ArrayList<Stand> getStands() {
-        return Storage.getInstance().getStands();
+        ArrayList<Stand> copies = new ArrayList<>();
+        for (Stand s : storage.getStands()) {
+            copies.add(s.clone());
+        }
+        Collections.sort(copies, (s1, s2) -> Long.compare(s1.getId(), s2.getId()));
+        return copies;
     }
     
-    public Response assignStandsToPublishers(java.util.ArrayList<String> standIds, java.util.ArrayList<String> publisherNits) {
+    public Response assignStandsToPublishers(ArrayList<String> standIds, ArrayList<String> publisherNits) {
         if (standIds == null || standIds.isEmpty()) {
             return new Response("Debe seleccionar al menos un Stand.", Status.BAD_REQUEST);
         }
@@ -70,8 +72,7 @@ public class StandController {
             return new Response("Debe seleccionar al menos una Editorial.", Status.BAD_REQUEST);
         }
 
-        java.util.ArrayList<Stand> selectedStands = new java.util.ArrayList<>();
-        Storage storage = Storage.getInstance();
+        ArrayList<Stand> selectedStands = new ArrayList<>();
         
         for (String idStr : standIds) {
             try {
@@ -90,7 +91,7 @@ public class StandController {
             }
         }
 
-        java.util.ArrayList<Publisher> selectedPublishers = new java.util.ArrayList<>();
+        ArrayList<Publisher> selectedPublishers = new ArrayList<>();
         for (String nit : publisherNits) {
             boolean found = false;
             for (Publisher p : storage.getPublishers()) {

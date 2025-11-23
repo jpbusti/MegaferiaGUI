@@ -42,5 +42,11 @@ public class Author extends Person {
         }
         return publishers.size();
     }
-    
+
+    @Override
+    public Author clone() {
+        Author cloned = (Author) super.clone();
+        cloned.books = new ArrayList<>(this.books);
+        return cloned;
+    }
 }

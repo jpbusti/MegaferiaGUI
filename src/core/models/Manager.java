@@ -26,8 +26,7 @@ public class Manager extends Person {
 
     @Override
     public Manager clone() {
-        Manager copia = new Manager(this.getId(), this.getFirstname(), this.getLastname());
-        return copia;
+        return (Manager) super.clone();
     }
 }
 
