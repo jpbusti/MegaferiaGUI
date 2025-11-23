@@ -4,8 +4,6 @@ package core.models;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
-
 import java.util.ArrayList;
 
 /**
@@ -13,6 +11,7 @@ import java.util.ArrayList;
  * @author edangulo
  */
 public class Audiobook extends Book {
+
     private int duration;
     private Narrator narrator;
 
@@ -24,10 +23,22 @@ public class Audiobook extends Book {
 
     @Override
     public String getSpecificInfo() {
-        String narradorName = (narrator != null) ? narrator.getFullname() : "N/A";
+        String narradorName;
+
+        if (narrator != null) {
+            narradorName = narrator.getFullname();
+        } else {
+            narradorName = "N/A";
+        }
+
         return "Duración: " + duration + " min, Narrador: " + narradorName;
     }
 
-    public int getDuration() { return duration; }
-    public Narrator getNarrador() { return narrator; }
+    public int getDuration() {
+        return duration;
+    }
+
+    public Narrator getNarrador() {
+        return narrator;
+    }
 }

@@ -2,28 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group name="Group 20240903-10:54:48">
-            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/controllers/PersonController.java</file>
-            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/models/Publisher.java</file>
-            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/controllers/BookController.java</file>
-            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/models/Author.java</file>
-            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/models/Person.java</file>
-            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/views/MegaferiaFrame.java</file>
-            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/models/DigitalBook.java</file>
-            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/models/Audiobook.java</file>
-            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/models/Book.java</file>
-            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/controllers/utils/Response.java</file>
-            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/models/Stand.java</file>
-            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/main/Main.java</file>
-            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/controllers/StandController.java</file>
-            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/models/PrintedBook.java</file>
-            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/models/storage/IStorage.java</file>
-            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/models/Narrator.java</file>
-            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/models/Manager.java</file>
-            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/controllers/utils/Status.java</file>
-            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/models/storage/Storage.java</file>
-            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/controllers/PublisherController.java</file>
-        </group>
         <group>
             <file>file:/C:/Users/JULIAN%20CASTILLA/OneDrive/Documentos/GitHub/MegaferiaGUI/src/core/models/Book.java</file>
             <file>file:/C:/Users/JULIAN%20CASTILLA/OneDrive/Documentos/GitHub/MegaferiaGUI/src/core/models/DigitalBook.java</file>
@@ -33,6 +11,33 @@
             <file>file:/C:/Users/JULIAN%20CASTILLA/OneDrive/Documentos/GitHub/MegaferiaGUI/src/core/controllers/PersonController.java</file>
             <file>file:/C:/Users/JULIAN%20CASTILLA/OneDrive/Documentos/GitHub/MegaferiaGUI/src/core/controllers/PublisherController.java</file>
             <file>file:/C:/Users/JULIAN%20CASTILLA/OneDrive/Documentos/GitHub/MegaferiaGUI/src/core/models/Audiobook.java</file>
+        </group>
+        <group name="Group 20240903-10:54:48">
+            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/controllers/PersonController.java</file>
+            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/models/Publisher.java</file>
+            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/models/BookFactory.java</file>
+            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/controllers/BookController.java</file>
+            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/models/Author.java</file>
+            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/models/Audiobook.java</file>
+            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/models/Book.java</file>
+            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/models/Stand.java</file>
+            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/controllers/StandController.java</file>
+            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/models/PrintedBook.java</file>
+            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/models/storage/IStorage.java</file>
+            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/controllers/utils/Status.java</file>
+            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/nbproject/build-impl.xml</file>
+            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/models/storage/Storage.java</file>
+            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/controllers/PublisherController.java</file>
+            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/models/Person.java</file>
+            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/views/MegaferiaFrame.java</file>
+            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/models/DigitalBook.java</file>
+            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/controllers/utils/Response.java</file>
+            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/models/storage/IStandRepository.java</file>
+            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/models/storage/IBookRepository.java</file>
+            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/main/Main.java</file>
+            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/models/Narrator.java</file>
+            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/models/Manager.java</file>
+            <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/models/storage/IPersonRepository.java</file>
         </group>
     </open-files>
 </project-private>

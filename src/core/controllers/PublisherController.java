@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class PublisherController {
-    
+
     private final IStandRepository standRepo;
     private final IPersonRepository personRepo;
 
@@ -29,12 +29,14 @@ public class PublisherController {
         return new Response("El nombre de la editorial solo debe contener letras, espacios o guiones.", Status.BAD_REQUEST);
     }
         for (Publisher p : standRepo.getPublishers()) {
-            if (p.getNit().equals(nit)) return new Response("Ya existe una editorial con ese NIT.", Status.BAD_REQUEST);
+            if (p.getNit().equals(nit)) {
+                return new Response("Ya existe una editorial con ese NIT.", Status.BAD_REQUEST);
+            }
         }
         if (name == null || name.isEmpty() || address == null || address.isEmpty()) {
             return new Response("Todos los campos son obligatorios.", Status.BAD_REQUEST);
         }
-        
+
         Manager manager = null;
         try {
             long mid = Long.parseLong(managerIdStr);
@@ -48,16 +50,25 @@ public class PublisherController {
             return new Response("ID de gerente inválido.", Status.BAD_REQUEST);
         }
 
-        if (manager == null) return new Response("El gerente seleccionado no es válido.", Status.BAD_REQUEST);
+        if (manager == null) {
+            return new Response("El gerente seleccionado no es válido.", Status.BAD_REQUEST);
+        }
 
         Publisher newPub = new Publisher(nit, name, address, manager);
         standRepo.addPublisher(newPub);
         return new Response("Editorial creada exitosamente.", Status.CREATED);
     }
-    
+
     public ArrayList<Publisher> getPublishers() {
         ArrayList<Publisher> list = new ArrayList<>(standRepo.getPublishers());
-        Collections.sort(list, (a, b) -> a.getNit().compareTo(b.getNit()));
+
+        Collections.sort(list, new java.util.Comparator<Publisher>() {
+            @Override
+            public int compare(Publisher a, Publisher b) {
+                return a.getNit().compareTo(b.getNit());
+            }
+        });
+
         return list;
     }
 }
