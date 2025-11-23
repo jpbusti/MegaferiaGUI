@@ -164,7 +164,18 @@ public class BookController {
         }
         return null;
     }
-    
+    public ArrayList<Book> getBooksByAuthor(long authorId){
+         ArrayList<Book> result = new ArrayList<>();
+    for (Book b : storage.getBooks()) {
+         for (Author a : b.getAuthors()) {
+             if (a.getId() == authorId) {
+                 result.add(b);
+                 break;
+             }
+         }
+    }
+        return result;
+}
     // IMPORTANTE: Retornar copia para Encapsulamiento
     public ArrayList<Book> getBooks() { 
         return new ArrayList<>(storage.getBooks()); 
