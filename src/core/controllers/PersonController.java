@@ -96,12 +96,7 @@ public class PersonController {
         return new Response("El nombre y apellido son obligatorios.", Status.BAD_REQUEST);
     }
     
-    // 2. Validación de solo letras usando Regex
-    // La expresión "[^\\p{L} \\-']" busca CUALQUIER carácter que NO sea:
-    // \\p{L}: cualquier letra en cualquier idioma (incluye tildes, ñ, etc.)
-    // espacio: ' '
-    // guión: '-'
-    // apóstrofe: '
+   
     String regex = "[^\\p{L} \\-']";
     
     if (name.trim().matches(".*" + regex + ".*")) {
