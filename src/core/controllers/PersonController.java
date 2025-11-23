@@ -92,6 +92,25 @@ public class PersonController {
         } catch (NumberFormatException e) {
             return new Response("El ID debe ser numérico.", Status.BAD_REQUEST);
         }
+        if (name == null || name.trim().isEmpty() || lastname == null || lastname.trim().isEmpty()) {
+        return new Response("El nombre y apellido son obligatorios.", Status.BAD_REQUEST);
+    }
+    
+    // 2. Validación de solo letras usando Regex
+    // La expresión "[^\\p{L} \\-']" busca CUALQUIER carácter que NO sea:
+    // \\p{L}: cualquier letra en cualquier idioma (incluye tildes, ñ, etc.)
+    // espacio: ' '
+    // guión: '-'
+    // apóstrofe: '
+    String regex = "[^\\p{L} \\-']";
+    
+    if (name.trim().matches(".*" + regex + ".*")) {
+        return new Response("El nombre solo debe contener letras.", Status.BAD_REQUEST);
+    }
+    
+    if (lastname.trim().matches(".*" + regex + ".*")) {
+        return new Response("El apellido solo debe contener letras.", Status.BAD_REQUEST);
+    }
         if (id < 0) return new Response("El ID debe ser positivo.", Status.BAD_REQUEST);
         if (idStr.length() > 15) return new Response("El ID no debe superar los 15 dígitos.", Status.BAD_REQUEST);
         if (name == null || name.trim().isEmpty() || lastname == null || lastname.trim().isEmpty()) {

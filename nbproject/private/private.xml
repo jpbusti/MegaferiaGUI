@@ -25,7 +25,13 @@
             <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/controllers/PublisherController.java</file>
         </group>
         <group>
-            <file>file:/D:/Users/casti/OneDrive/Documentos/Basic%20progranation/Programacion/Parcial%203%20POO/MegaferiaGUI/src/main/Main.java</file>
+            <file>file:/C:/Users/JULIAN%20CASTILLA/OneDrive/Documentos/GitHub/MegaferiaGUI/src/core/models/Book.java</file>
+            <file>file:/C:/Users/JULIAN%20CASTILLA/OneDrive/Documentos/GitHub/MegaferiaGUI/src/core/models/DigitalBook.java</file>
+            <file>file:/C:/Users/JULIAN%20CASTILLA/OneDrive/Documentos/GitHub/MegaferiaGUI/src/core/models/Author.java</file>
+            <file>file:/C:/Users/JULIAN%20CASTILLA/OneDrive/Documentos/GitHub/MegaferiaGUI/src/core/views/MegaferiaFrame.java</file>
+            <file>file:/C:/Users/JULIAN%20CASTILLA/OneDrive/Documentos/GitHub/MegaferiaGUI/src/core/models/PrintedBook.java</file>
+            <file>file:/C:/Users/JULIAN%20CASTILLA/OneDrive/Documentos/GitHub/MegaferiaGUI/src/core/controllers/PersonController.java</file>
+            <file>file:/C:/Users/JULIAN%20CASTILLA/OneDrive/Documentos/GitHub/MegaferiaGUI/src/core/models/Audiobook.java</file>
         </group>
     </open-files>
 </project-private>
