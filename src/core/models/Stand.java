@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author edangulo
  */
-public class Stand implements Cloneable {
+public class Stand {
     
     private long id;
     private double price;
@@ -43,15 +43,5 @@ public class Stand implements Cloneable {
     public int getPublisherQuantity() {
         return this.publishers.size();
     }
-
-    @Override
-    public Stand clone() {
-        try {
-            Stand cloned = (Stand) super.clone();
-            cloned.publishers = new ArrayList<>(this.publishers);
-            return cloned;
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError();
-        }
-    }
+    
 }

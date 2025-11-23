@@ -28,11 +28,5 @@ public class Narrator extends Person {
     public void addBook(Audiobook book) {
         this.books.add(book);
     }
-
-    @Override
-    public Narrator clone() {
-        Narrator cloned = (Narrator) super.clone();
-        cloned.books = new ArrayList<>(this.books);
-        return cloned;
-    }
+    
 }

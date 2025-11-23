@@ -32,9 +32,5 @@ public class Audiobook extends Book {
     public Narrator getNarrador() {
         return narrador;
     }
-
-    @Override
-    public Audiobook clone() {
-        return (Audiobook) super.clone();
-    }
+    
 }

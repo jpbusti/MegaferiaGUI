@@ -1,17 +1,19 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package core.controllers;
 
 import core.models.Manager;
 import core.models.Publisher;
-import core.models.storage.IStorage;
 import core.models.storage.Storage;
 import core.controllers.utils.Response;
 import core.controllers.utils.Status;
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class PublisherController {
     
-    private IStorage storage;
+    private Storage storage;
 
     public PublisherController() {
         this.storage = Storage.getInstance();
@@ -52,18 +54,15 @@ public class PublisherController {
         }
         
         Publisher newPublisher = new Publisher(nit, name, address, selectedManager);
+        
         selectedManager.setPublisher(newPublisher);
+        
         storage.getPublishers().add(newPublisher);
         
         return new Response("Editorial creada exitosamente.", Status.CREATED);
     }
     
     public ArrayList<Publisher> getPublishers() {
-        ArrayList<Publisher> copies = new ArrayList<>();
-        for (Publisher p : storage.getPublishers()) {
-            copies.add(p.clone());
-        }
-        Collections.sort(copies, (p1, p2) -> p1.getNit().compareTo(p2.getNit()));
-        return copies;
+        return storage.getPublishers();
     }
 }

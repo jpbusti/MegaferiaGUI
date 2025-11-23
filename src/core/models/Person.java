@@ -10,7 +10,7 @@ package core.models;
  *
  * @author edangulo
  */
-public abstract class Person implements Cloneable {
+public abstract class Person {
     
     protected final long id;
     protected String firstname;
@@ -37,13 +37,5 @@ public abstract class Person implements Cloneable {
     public String getFullname() {
         return firstname + " " + lastname;
     }
-
-    @Override
-    public Person clone() {
-        try {
-            return (Person) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError();
-        }
-    }
-}       
+    
+}

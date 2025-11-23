@@ -1645,7 +1645,7 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
     private void btnConsultarEditorialesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarEditorialesActionPerformed
         // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        model.setRowCount(0);
+        model.setRowCount(0); 
 
         for (Publisher publisher : publisherController.getPublishers()) {
             model.addRow(new Object[]{
@@ -1724,42 +1724,48 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
     }//GEN-LAST:event_btnConsultarLibrosActionPerformed
 
     private void btnConsultarAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarAutorActionPerformed
+         // Aquí se ingresarán unicamente los llamados a los valores necesarios para las acciones del autor
         String seleccion = (String) cmbAutorConsulta.getSelectedItem();
         if (seleccion == null || seleccion.equals("Seleccione uno...")) {
             return;
         }
 
         long authorId = Long.parseLong(seleccion.split(" - ")[0]);
-
         DefaultTableModel model = (DefaultTableModel) jTable5.getModel();
         model.setRowCount(0);
 
-        ArrayList<Book> librosFiltrados = bookController.getBooksByAuthor(authorId);
-
-        for (Book book : librosFiltrados) {
-            addBookToTable(model, book);
-        }
-
+        // La vista solo pide y pinta
+ArrayList<Book> librosFiltrados = bookController.getBooksByAuthor(authorId);
+for (Book b : librosFiltrados) {
+    addBookToTable(model, b);
+}
+            
     }//GEN-LAST:event_btnConsultarAutorActionPerformed
 
     private void btnConsultarFormatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarFormatoActionPerformed
+// Aquí se ingresarán unicamente los llamados a los valores necesarios para las acciones de los formatos
         String formatoBuscado = (String) cmbFormatoConsulta.getSelectedItem();
+        if (formatoBuscado == null || formatoBuscado.equals("Seleccione uno...")) {
+            return;
+        }
 
         DefaultTableModel model = (DefaultTableModel) jTable5.getModel();
         model.setRowCount(0);
 
-        ArrayList<Book> librosFiltrados = bookController.getBooksByFormat(formatoBuscado);
-
-        for (Book book : librosFiltrados) {
-            addBookToTable(model, book);
+        for (Book book : bookController.getBooks()) {
+            if (book.getFormat().equalsIgnoreCase(formatoBuscado)) {
+                addBookToTable(model, book);
+            }
         }
+               
     }//GEN-LAST:event_btnConsultarFormatoActionPerformed
 
     private void btnConsultarAutoresMasLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarAutoresMasLibrosActionPerformed
-        // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel) jTable6.getModel();
-        model.setRowCount(0);
-
+         // TODO add your handling code here:
+        // Obtener el modelo de la tabla jTable6
+    DefaultTableModel model = (DefaultTableModel) jTable6.getModel();
+    model.setRowCount(0); // Limpiar la tabla antes de llenarla
+        
         ArrayList<Author> topAuthors = personController.getAuthorsWithMostBooksInDifferentPublishers();
 
         for (Author a : topAuthors) {
@@ -1832,6 +1838,7 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
         }
     }
 
+    // Elimina un autor del TextArea
     private void removeAuthorFromTextArea() {
         String selected = (String) cmbAutores.getSelectedItem();
         if (selected == null || selected.equals("Seleccione uno...")) {
@@ -1890,6 +1897,7 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
             cmbNarrador.setSelectedIndex(0);
         }
     }
+
 
     public void refreshBookTable() {
         String filtro = (String) cmbLibrosShow.getSelectedItem();
@@ -1951,6 +1959,10 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
             }
         }
     }
+
+
+
+
 
     private java.util.ArrayList<String> getSelectedStandIdsForPurchase() {
         java.util.ArrayList<String> ids = new java.util.ArrayList<>();

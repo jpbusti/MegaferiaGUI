@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author edangulo
  */
-public class Publisher implements Cloneable {
+public class Publisher {
     
     private final String nit;
     private String name;
@@ -59,16 +59,5 @@ public class Publisher implements Cloneable {
     public void addStand(Stand stand) {
         this.stands.add(stand);
     }
-
-    @Override
-    public Publisher clone() {
-        try {
-            Publisher cloned = (Publisher) super.clone();
-            cloned.books = new ArrayList<>(this.books);
-            cloned.stands = new ArrayList<>(this.stands);
-            return cloned;
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError();
-        }
-    }
+    
 }

@@ -4,14 +4,16 @@ package core.models;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+
+
 import java.util.ArrayList;
 
 /**
  *
  * @author edangulo
  */
-public abstract class Book implements Cloneable {
-
+public abstract class Book {
+    
     protected String title;
     protected ArrayList<Author> authors;
     protected final String isbn;
@@ -28,7 +30,7 @@ public abstract class Book implements Cloneable {
         this.format = format;
         this.value = value;
         this.publisher = publisher;
-
+        
         for (Author autor : this.authors) {
             autor.addBook(this);
         }
@@ -62,15 +64,5 @@ public abstract class Book implements Cloneable {
     public Publisher getPublisher() {
         return publisher;
     }
-
-    @Override
-    public Book clone() {
-        try {
-            Book cloned = (Book) super.clone();
-            cloned.authors = new ArrayList<>(this.authors);
-            return cloned;
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError();
-        }
-    }
+    
 }
