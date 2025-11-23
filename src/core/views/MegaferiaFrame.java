@@ -1592,12 +1592,7 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
             if (!narradorSel.equals("Seleccione uno...") && narradorSel.contains(" - ")) {
                 narratorId = narradorSel.split(" - ")[0];
             }
-
-        } else {
-            javax.swing.JOptionPane.showMessageDialog(this, "Debe seleccionar un tipo de libro.", "Error", javax.swing.JOptionPane.WARNING_MESSAGE);
-            return;
         }
-
         Response response = bookController.createBook(
                 type,
                 title,
@@ -1624,8 +1619,17 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
 
     private void btonAgregarStandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btonAgregarStandActionPerformed
         // TODO add your handling code here:
-        String stand = cmbIDStands.getItemAt(cmbIDStands.getSelectedIndex());
-        jTextArea3.append(stand + "\n");
+        String selected = (String) cmbIDStands.getSelectedItem();
+
+        if (selected == null || selected.equals("Seleccione uno...")) {
+            return;
+        }
+
+        if (!jTextArea3.getText().contains(selected)) {
+            jTextArea3.append(selected + "\n");
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "El elemento ya fue agregado.");
+        }
     }//GEN-LAST:event_btonAgregarStandActionPerformed
 
     private void btnEliminarStandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarStandActionPerformed
@@ -1636,8 +1640,17 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
 
     private void btnAgregarEditorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarEditorialActionPerformed
         // TODO add your handling code here:
-        String publisher = cmbEditorialesComprarStand.getItemAt(cmbEditorialesComprarStand.getSelectedIndex());
-        jTextArea1.append(publisher + "\n");
+        String selected = (String) cmbEditorialesComprarStand.getSelectedItem();
+
+        if (selected == null || selected.equals("Seleccione uno...")) {
+            return;
+        }
+
+        if (!jTextArea1.getText().contains(selected)) {
+            jTextArea1.append(selected + "\n");
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "El elemento ya fue agregado.");
+        }
     }//GEN-LAST:event_btnAgregarEditorialActionPerformed
 
     private void btnEliminarEditorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarEditorialActionPerformed
