@@ -23,6 +23,11 @@ public class PublisherController {
         if (nit == null || !nit.matches("\\d{3}\\.\\d{3}\\.\\d{3}-\\d")) {
             return new Response("El NIT debe tener formato XXX.XXX.XXX-X", Status.BAD_REQUEST);
         }
+        String regex = "[^\\p{L} \\-]"; 
+
+    if (name.trim().matches(".*" + regex + ".*")) {
+        return new Response("El nombre de la editorial solo debe contener letras, espacios o guiones.", Status.BAD_REQUEST);
+    }
         for (Publisher p : standRepo.getPublishers()) {
             if (p.getNit().equals(nit)) return new Response("Ya existe una editorial con ese NIT.", Status.BAD_REQUEST);
         }
