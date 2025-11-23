@@ -2,9 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Jefferson/MegaferiaGUI/src/core/MegaferiaFrame.java</file>
-        </group>
         <group name="Group 20240903-10:54:48">
             <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/controllers/utils/Response.java</file>
             <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/models/Stand.java</file>
@@ -18,6 +15,9 @@
             <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/views/MegaferiaFrame.java</file>
             <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/models/storage/Storage.java</file>
             <file>file:/C:/Users/RYZEN/Desktop/MegaferiaGUI/src/core/controllers/PublisherController.java</file>
+        </group>
+        <group>
+            <file>file:/D:/Users/casti/OneDrive/Documentos/Basic%20progranation/Programacion/Parcial%203%20POO/MegaferiaGUI/src/main/Main.java</file>
         </group>
     </open-files>
 </project-private>
