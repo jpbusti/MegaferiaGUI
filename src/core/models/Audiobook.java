@@ -13,24 +13,21 @@ import java.util.ArrayList;
  * @author edangulo
  */
 public class Audiobook extends Book {
-    
     private int duration;
-    private Narrator narrador;
+    private Narrator narrator;
 
     public Audiobook(String title, ArrayList<Author> authors, String isbn, String genre, String format, double value, Publisher publisher, int duration, Narrator narrator) {
         super(title, authors, isbn, genre, format, value, publisher);
         this.duration = duration;
-        this.narrador = narrator;
-        
-        this.narrador.addBook(this);
+        this.narrator = narrator;
     }
 
-    public int getDuration() {
-        return duration;
+    @Override
+    public String getSpecificInfo() {
+        String narradorName = (narrator != null) ? narrator.getFullname() : "N/A";
+        return "Duración: " + duration + " min, Narrador: " + narradorName;
     }
 
-    public Narrator getNarrador() {
-        return narrador;
-    }
-    
+    public int getDuration() { return duration; }
+    public Narrator getNarrador() { return narrator; }
 }

@@ -30,23 +30,35 @@ import javax.swing.table.DefaultTableModel;
  */
 public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChangeListener {
 
+    private final StandController standController;
+    private final PersonController personController;
+    private final PublisherController publisherController;
+    private final BookController bookController;
+
     /**
      * Creates new form MegaferiaFrame
      */
-    private StandController standController;
-    private PersonController personController;
-    private PublisherController publisherController;
-    private BookController bookController;
+    public MegaferiaFrame(StandController standCtrl, PersonController personCtrl, PublisherController pubCtrl, BookController bookCtrl) {
 
-    public MegaferiaFrame() {
+        this.standController = standCtrl;
+        this.personController = personCtrl;
+        this.publisherController = pubCtrl;
+        this.bookController = bookCtrl;
+
         initComponents();
         setLocationRelativeTo(null);
-        this.standController = new StandController();
-        this.personController = new PersonController();
-        this.publisherController = new PublisherController();
-        this.bookController = new BookController();
+
         this.bookController.addPropertyChangeListener(this);
 
+        refreshAuthorCombos();
+        refreshManagerCombos();
+        refreshNarratorCombos();
+        refreshPublisherCombos();
+        refreshStandCombos();
+
+        String[] columnNames = {"Titulo", "Autores", "ISBN", "Genero", "Formato", "Valor", "Editorial", "Info Específica"};
+        DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+        jTable4.setModel(model);
     }
 
     /**
@@ -1492,9 +1504,13 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
 
         String managerSelection = (String) jComboBox1.getSelectedItem();
 
-        String managerIdStr = (managerSelection != null && managerSelection.contains(" - "))
-                ? managerSelection.split(" - ")[0]
-                : managerSelection;
+        String managerIdStr;
+
+        if (managerSelection != null && managerSelection.contains(" - ")) {
+            managerIdStr = managerSelection.split(" - ")[0];
+        } else {
+            managerIdStr = managerSelection;
+        }
 
         Response response = publisherController.createPublisher(nit, name, address, managerIdStr);
 
@@ -1552,36 +1568,48 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
 
         java.util.ArrayList<String> authorIds = getSelectedAuthorIds();
 
-        Response response = null;
+        java.util.Map<String, String> extraParams = new java.util.HashMap<>();
+        String type = "";
+        String narratorId = "";
 
         if (rImpreso.isSelected()) {
-            String pages = txtNroPaginas.getText();
-            String copies = txtNroEjemplares.getText();
-            response = bookController.createPrintedBook(title, isbn, authorIds, publisherNit, priceStr, genre, format, pages, copies);
+            type = "Impreso";
+            extraParams.put("pages", txtNroPaginas.getText());
+            extraParams.put("copies", txtNroEjemplares.getText());
 
         } else if (rDigital.isSelected()) {
-            String url = txtHipervinculo.getText();
-            response = bookController.createDigitalBook(title, isbn, authorIds, publisherNit, priceStr, genre, format, url);
+            type = "Digital";
+            extraParams.put("url", txtHipervinculo.getText());
 
         } else if (rAudioLibro.isSelected()) {
-            String duration = txtDuracion.getText();
+            type = "AudioLibro";
+            extraParams.put("duration", txtDuracion.getText());
 
             String narradorSel = "";
             if (cmbNarrador.getSelectedItem() != null) {
                 narradorSel = cmbNarrador.getSelectedItem().toString();
             }
-
-            String narradorId = "";
             if (!narradorSel.equals("Seleccione uno...") && narradorSel.contains(" - ")) {
-                narradorId = narradorSel.split(" - ")[0];
+                narratorId = narradorSel.split(" - ")[0];
             }
-
-            response = bookController.createAudioBook(title, isbn, authorIds, publisherNit, priceStr, genre, format, duration, narradorId);
 
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "Debe seleccionar un tipo de libro.", "Error", javax.swing.JOptionPane.WARNING_MESSAGE);
             return;
         }
+
+        Response response = bookController.createBook(
+                type,
+                title,
+                isbn,
+                authorIds,
+                publisherNit,
+                priceStr,
+                genre,
+                format,
+                extraParams,
+                narratorId
+        );
 
         if (response.getStatus() >= 500) {
             javax.swing.JOptionPane.showMessageDialog(this, response.getMessage(), "Error Crítico", javax.swing.JOptionPane.ERROR_MESSAGE);
@@ -1645,7 +1673,7 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
     private void btnConsultarEditorialesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarEditorialesActionPerformed
         // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        model.setRowCount(0); 
+        model.setRowCount(0);
 
         for (Publisher publisher : publisherController.getPublishers()) {
             model.addRow(new Object[]{
@@ -1724,48 +1752,42 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
     }//GEN-LAST:event_btnConsultarLibrosActionPerformed
 
     private void btnConsultarAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarAutorActionPerformed
-         // Aquí se ingresarán unicamente los llamados a los valores necesarios para las acciones del autor
         String seleccion = (String) cmbAutorConsulta.getSelectedItem();
         if (seleccion == null || seleccion.equals("Seleccione uno...")) {
             return;
         }
 
         long authorId = Long.parseLong(seleccion.split(" - ")[0]);
+
         DefaultTableModel model = (DefaultTableModel) jTable5.getModel();
         model.setRowCount(0);
 
-        // La vista solo pide y pinta
-ArrayList<Book> librosFiltrados = bookController.getBooksByAuthor(authorId);
-for (Book b : librosFiltrados) {
-    addBookToTable(model, b);
-}
-            
+        ArrayList<Book> librosFiltrados = bookController.getBooksByAuthor(authorId);
+
+        for (Book book : librosFiltrados) {
+            addBookToTable(model, book);
+        }
+
     }//GEN-LAST:event_btnConsultarAutorActionPerformed
 
     private void btnConsultarFormatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarFormatoActionPerformed
-// Aquí se ingresarán unicamente los llamados a los valores necesarios para las acciones de los formatos
         String formatoBuscado = (String) cmbFormatoConsulta.getSelectedItem();
-        if (formatoBuscado == null || formatoBuscado.equals("Seleccione uno...")) {
-            return;
-        }
 
         DefaultTableModel model = (DefaultTableModel) jTable5.getModel();
         model.setRowCount(0);
 
-        for (Book book : bookController.getBooks()) {
-            if (book.getFormat().equalsIgnoreCase(formatoBuscado)) {
-                addBookToTable(model, book);
-            }
+        ArrayList<Book> librosFiltrados = bookController.getBooksByFormat(formatoBuscado);
+
+        for (Book book : librosFiltrados) {
+            addBookToTable(model, book);
         }
-               
     }//GEN-LAST:event_btnConsultarFormatoActionPerformed
 
     private void btnConsultarAutoresMasLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarAutoresMasLibrosActionPerformed
-         // TODO add your handling code here:
-        // Obtener el modelo de la tabla jTable6
-    DefaultTableModel model = (DefaultTableModel) jTable6.getModel();
-    model.setRowCount(0); // Limpiar la tabla antes de llenarla
-        
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) jTable6.getModel();
+        model.setRowCount(0);
+
         ArrayList<Author> topAuthors = personController.getAuthorsWithMostBooksInDifferentPublishers();
 
         for (Author a : topAuthors) {
@@ -1838,7 +1860,6 @@ for (Book b : librosFiltrados) {
         }
     }
 
-    // Elimina un autor del TextArea
     private void removeAuthorFromTextArea() {
         String selected = (String) cmbAutores.getSelectedItem();
         if (selected == null || selected.equals("Seleccione uno...")) {
@@ -1898,47 +1919,31 @@ for (Book b : librosFiltrados) {
         }
     }
 
-
     public void refreshBookTable() {
         String filtro = (String) cmbLibrosShow.getSelectedItem();
-        DefaultTableModel model = (DefaultTableModel) jTable4.getModel();
+
+        javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) jTable4.getModel();
         model.setRowCount(0);
 
         for (Book book : bookController.getBooks()) {
 
-            StringBuilder autoresStr = new StringBuilder();
-            if (!book.getAuthors().isEmpty()) {
-                autoresStr.append(book.getAuthors().get(0).getFullname());
-                for (int i = 1; i < book.getAuthors().size(); i++) {
-                    autoresStr.append(", ").append(book.getAuthors().get(i).getFullname());
-                }
-            }
             boolean mostrar = false;
             if ("Todos los Libros".equals(filtro)) {
                 mostrar = true;
-            } else if ("Libros Impresos".equals(filtro) && book instanceof PrintedBook) {
+            } else if ("Libros Impresos".equals(filtro) && book instanceof core.models.PrintedBook) {
                 mostrar = true;
-            } else if ("Libros Digitales".equals(filtro) && book instanceof DigitalBook) {
+            } else if ("Libros Digitales".equals(filtro) && book instanceof core.models.DigitalBook) {
                 mostrar = true;
-            } else if ("Audiolibros".equals(filtro) && book instanceof Audiobook) {
+            } else if ("Audiolibros".equals(filtro) && book instanceof core.models.Audiobook) {
                 mostrar = true;
             }
 
             if (mostrar) {
-                int paginas = 0, ejemplares = 0, duracion = 0;
-                String url = "-", narrador = "-";
-
-                if (book instanceof PrintedBook pb) {
-                    paginas = pb.getPages();
-                    ejemplares = pb.getCopies();
-                } else if (book instanceof DigitalBook db) {
-                    if (db.hasHyperlink()) {
-                        url = db.getHyperlink();
-                    }
-                } else if (book instanceof Audiobook ab) {
-                    duracion = ab.getDuration();
-                    if (ab.getNarrador() != null) {
-                        narrador = ab.getNarrador().getFullname();
+                StringBuilder autoresStr = new StringBuilder();
+                if (!book.getAuthors().isEmpty()) {
+                    autoresStr.append(book.getAuthors().get(0).getFullname());
+                    for (int i = 1; i < book.getAuthors().size(); i++) {
+                        autoresStr.append(", ").append(book.getAuthors().get(i).getFullname());
                     }
                 }
 
@@ -1950,19 +1955,11 @@ for (Book b : librosFiltrados) {
                     book.getFormat(),
                     book.getValue(),
                     book.getPublisher().getName(),
-                    (book instanceof PrintedBook) ? paginas : "-",
-                    (book instanceof PrintedBook) ? ejemplares : "-",
-                    url,
-                    narrador,
-                    (book instanceof Audiobook) ? duracion : "-"
+                    book.getSpecificInfo()
                 });
             }
         }
     }
-
-
-
-
 
     private java.util.ArrayList<String> getSelectedStandIdsForPurchase() {
         java.util.ArrayList<String> ids = new java.util.ArrayList<>();

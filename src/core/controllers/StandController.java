@@ -1,115 +1,82 @@
 package core.controllers;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-
 import core.controllers.utils.Response;
 import core.controllers.utils.Status;
 import core.models.Publisher;
 import core.models.Stand;
-import core.models.storage.Storage;
+import core.models.storage.IStandRepository;
 import java.util.ArrayList;
+import java.util.Collections;
 
-/**
- *
- * @author Juan
- */
 public class StandController {
     
+    private final IStandRepository standRepo;
+
+    public StandController(IStandRepository standRepo) {
+        this.standRepo = standRepo;
+    }
+    
     public Response createStand(String idStr, String priceStr) {
+        long id;
+        double price;
         try {
-            long id;
-            double price;
-
-            try {
-                id = Long.parseLong(idStr);
-                price = Double.parseDouble(priceStr);
-            } catch (NumberFormatException e) {
-                return new Response("El ID y el Precio deben ser numéricos.", Status.BAD_REQUEST);
-            }
-
-            if (id < 0) {
-                return new Response("El ID debe ser mayor o igual a 0.", Status.BAD_REQUEST);
-            }
-            if (String.valueOf(id).length() > 15) {
-                return new Response("El ID no debe tener más de 15 dígitos.", Status.BAD_REQUEST);
-            }
-            if (price <= 0) {
-                return new Response("El precio debe ser superior a 0.", Status.BAD_REQUEST);
-            }
-
-            Storage storage = Storage.getInstance();
-            for (Stand stand : storage.getStands()) {
-                if (stand.getId() == id) {
-                    return new Response("Ya existe un Stand con ese ID.", Status.BAD_REQUEST);
-                }
-            }
-
-            Stand newStand = new Stand(id, price);
-            storage.getStands().add(newStand);
-            
-            return new Response("Stand creado exitosamente.", Status.CREATED);
-
-        } catch (Exception ex) {
-            return new Response("Error inesperado al crear el stand.", Status.INTERNAL_SERVER_ERROR);
+            id = Long.parseLong(idStr);
+            price = Double.parseDouble(priceStr);
+        } catch (NumberFormatException e) {
+            return new Response("ID y Precio deben ser numéricos.", Status.BAD_REQUEST);
         }
+        
+        if (id < 0 || idStr.length() > 15) return new Response("ID inválido.", Status.BAD_REQUEST);
+        if (price <= 0) return new Response("El precio debe ser mayor a 0.", Status.BAD_REQUEST);
+        
+        for (Stand s : standRepo.getStands()) {
+            if (s.getId() == id) return new Response("El Stand ya existe.", Status.BAD_REQUEST);
+        }
+        
+        standRepo.addStand(new Stand(id, price));
+        return new Response("Stand creado exitosamente.", Status.CREATED);
+    }
+    
+    public Response assignStandsToPublishers(ArrayList<String> standIds, ArrayList<String> publisherNits) {
+        if (standIds.isEmpty() || publisherNits.isEmpty()) {
+            return new Response("Debe seleccionar Stands y Editoriales.", Status.BAD_REQUEST);
+        }
+        
+        ArrayList<Stand> standsToBuy = new ArrayList<>();
+        ArrayList<Publisher> buyers = new ArrayList<>();
+        
+        // Validar existencia
+        for (String sid : standIds) {
+            Stand s = findStand(Long.parseLong(sid));
+            if (s != null) standsToBuy.add(s);
+        }
+        for (String nit : publisherNits) {
+            Publisher p = findPublisher(nit);
+            if (p != null) buyers.add(p);
+        }
+        
+        for (Stand s : standsToBuy) {
+            for (Publisher p : buyers) {
+                s.getPublishers().add(p);
+            }
+        }
+        
+        return new Response("Compra realizada con éxito.", Status.OK);
     }
     
     public ArrayList<Stand> getStands() {
-        return Storage.getInstance().getStands();
+        ArrayList<Stand> list = new ArrayList<>(standRepo.getStands());
+        Collections.sort(list, (a, b) -> Long.compare(a.getId(), b.getId()));
+        return list;
     }
     
-    public Response assignStandsToPublishers(java.util.ArrayList<String> standIds, java.util.ArrayList<String> publisherNits) {
-        if (standIds == null || standIds.isEmpty()) {
-            return new Response("Debe seleccionar al menos un Stand.", Status.BAD_REQUEST);
-        }
-        if (publisherNits == null || publisherNits.isEmpty()) {
-            return new Response("Debe seleccionar al menos una Editorial.", Status.BAD_REQUEST);
-        }
-
-        java.util.ArrayList<Stand> selectedStands = new java.util.ArrayList<>();
-        Storage storage = Storage.getInstance();
-        
-        for (String idStr : standIds) {
-            try {
-                long id = Long.parseLong(idStr);
-                boolean found = false;
-                for (Stand s : storage.getStands()) {
-                    if (s.getId() == id) {
-                        selectedStands.add(s);
-                        found = true;
-                        break;
-                    }
-                }
-                if (!found) return new Response("El Stand con ID " + id + " no existe.", Status.BAD_REQUEST);
-            } catch (NumberFormatException e) {
-                return new Response("ID de Stand inválido: " + idStr, Status.BAD_REQUEST);
-            }
-        }
-
-        java.util.ArrayList<Publisher> selectedPublishers = new java.util.ArrayList<>();
-        for (String nit : publisherNits) {
-            boolean found = false;
-            for (Publisher p : storage.getPublishers()) {
-                if (p.getNit().equals(nit)) {
-                    selectedPublishers.add(p);
-                    found = true;
-                    break;
-                }
-            }
-            if (!found) return new Response("La Editorial con NIT " + nit + " no existe.", Status.BAD_REQUEST);
-        }
-
-        for (Stand stand : selectedStands) {
-            for (Publisher publisher : selectedPublishers) {
-                stand.addPublisher(publisher);
-                publisher.addStand(stand);
-            }
-        }
-
-        return new Response("Compra de Stands registrada exitosamente.", Status.OK);
+    private Stand findStand(long id) {
+        for (Stand s : standRepo.getStands()) if (s.getId() == id) return s;
+        return null;
+    }
+    
+    private Publisher findPublisher(String nit) {
+        for (Publisher p : standRepo.getPublishers()) if (p.getNit().equals(nit)) return p;
+        return null;
     }
 }

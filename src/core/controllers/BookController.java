@@ -2,182 +2,185 @@ package core.controllers;
 
 import core.controllers.utils.Response;
 import core.controllers.utils.Status;
-import core.models.Audiobook;
 import core.models.Author;
 import core.models.Book;
-import core.models.DigitalBook;
+import core.models.BookFactory;
 import core.models.Narrator;
-import core.models.PrintedBook;
 import core.models.Publisher;
-import core.models.storage.Storage;
-import java.beans.PropertyChangeSupport; // IMPORTANTE: Faltaba esto
+import core.models.storage.IBookRepository;
+import core.models.storage.IPersonRepository;
+import core.models.storage.IStandRepository;
+import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Map;
 
-/**
- *
- * @author Juan
- */
 public class BookController {
-    
-    private Storage storage;
-    private PropertyChangeSupport support; // IMPORTANTE: Faltaba esto
 
-    public BookController() {
-        this.storage = Storage.getInstance();
-        this.support = new PropertyChangeSupport(this); // IMPORTANTE: Inicialización
+    private final IBookRepository bookRepo;
+    private final IPersonRepository personRepo;
+    private final IStandRepository standRepo;
+    private final PropertyChangeSupport support;
+
+    public BookController(IBookRepository bookRepo, IPersonRepository personRepo, IStandRepository standRepo) {
+        this.bookRepo = bookRepo;
+        this.personRepo = personRepo;
+        this.standRepo = standRepo;
+        this.support = new PropertyChangeSupport(this);
     }
-    
-    // IMPORTANTE: Este es el método que Java te está pidiendo y no encontraba
+
     public void addPropertyChangeListener(java.beans.PropertyChangeListener pcl) {
         support.addPropertyChangeListener(pcl);
     }
 
-    private Response validateCommonData(String title, String isbn, ArrayList<String> authorIds, String publisherNit, String priceStr) {
+    // MÉTODO ÚNICO GENÉRICO (OCP)
+    public Response createBook(String type, String title, String isbn, ArrayList<String> authorIds,
+            String publisherNit, String priceStr, String genre, String format,
+            Map<String, String> extraParams, String narratorIdStr) {
+
         if (title == null || title.trim().isEmpty() || isbn == null || isbn.trim().isEmpty()) {
             return new Response("El título y el ISBN son obligatorios.", Status.BAD_REQUEST);
         }
+
         double price;
         try {
             price = Double.parseDouble(priceStr);
-            if (price <= 0) return new Response("El precio debe ser mayor a 0.", Status.BAD_REQUEST);
+            if (price <= 0) {
+                return new Response("El precio debe ser mayor a 0.", Status.BAD_REQUEST);
+            }
         } catch (NumberFormatException e) {
             return new Response("El precio debe ser un número válido.", Status.BAD_REQUEST);
         }
+
         if (!isbn.matches("\\d{3}-\\d-\\d{2}-\\d{6}-\\d")) {
             return new Response("El ISBN debe tener el formato XXX-X-XX-XXXXXX-X", Status.BAD_REQUEST);
         }
-        // Usamos getBooks() que devuelve copia segura
-        for (Book b : getBooks()) {
+
+        for (Book b : bookRepo.getBooks()) {
             if (b.getIsbn().equals(isbn)) {
                 return new Response("Ya existe un libro registrado con ese ISBN.", Status.BAD_REQUEST);
             }
         }
+
         if (authorIds == null || authorIds.isEmpty()) {
             return new Response("Debe seleccionar al menos un autor.", Status.BAD_REQUEST);
         }
-        if (getPublisherByNit(publisherNit) == null) {
-            return new Response("La editorial seleccionada no es válida.", Status.BAD_REQUEST);
-        }
-        return new Response("OK", Status.OK);
-    }
 
-    public Response createPrintedBook(String title, String isbn, ArrayList<String> authorIds, String publisherNit, String priceStr, String genre, String format, String pagesStr, String copiesStr) {
-        Response common = validateCommonData(title, isbn, authorIds, publisherNit, priceStr);
-        if (!common.getMessage().equals("OK")) return common;
-
-        try {
-            int pages = Integer.parseInt(pagesStr);
-            int copies = Integer.parseInt(copiesStr);
-            double price = Double.parseDouble(priceStr);
-            
-            if (pages <= 0 || copies <= 0) return new Response("Las páginas y ejemplares deben ser mayores a 0.", Status.BAD_REQUEST);
-            
-            ArrayList<Author> authors = getAuthorsByIds(authorIds);
-            Publisher publisher = getPublisherByNit(publisherNit);
-            
-            PrintedBook book = new PrintedBook(title, authors, isbn, genre, format, price, publisher, pages, copies);
-            storage.getBooks().add(book);
-            
-            // Notificamos a la vista (Patrón Observer)
-            support.firePropertyChange("NewBook", null, book);
-
-            return new Response("Libro Impreso creado exitosamente.", Status.CREATED);
-        } catch (NumberFormatException e) {
-            return new Response("El número de páginas y ejemplares deben ser enteros.", Status.BAD_REQUEST);
-        }
-    }
-
-    public Response createDigitalBook(String title, String isbn, ArrayList<String> authorIds, String publisherNit, String priceStr, String genre, String format, String url) {
-        Response common = validateCommonData(title, isbn, authorIds, publisherNit, priceStr);
-        if (!common.getMessage().equals("OK")) return common;
-
-        double price = Double.parseDouble(priceStr);
         ArrayList<Author> authors = getAuthorsByIds(authorIds);
         Publisher publisher = getPublisherByNit(publisherNit);
 
-        DigitalBook book;
-        if (url == null || url.trim().isEmpty()) {
-             book = new DigitalBook(title, authors, isbn, genre, format, price, publisher);
-        } else {
-             book = new DigitalBook(title, authors, isbn, genre, format, price, publisher, url);
+        if (publisher == null) {
+            return new Response("La editorial seleccionada no es válida.", Status.BAD_REQUEST);
         }
-        storage.getBooks().add(book);
-        
-        // Notificamos a la vista (Patrón Observer)
-        support.firePropertyChange("NewBook", null, book);
 
-        return new Response("Libro Digital creado exitosamente.", Status.CREATED);
-    }
-
-    public Response createAudioBook(String title, String isbn, ArrayList<String> authorIds, String publisherNit, String priceStr, String genre, String format, String durationStr, String narratorIdStr) {
-        Response common = validateCommonData(title, isbn, authorIds, publisherNit, priceStr);
-        if (!common.getMessage().equals("OK")) return common;
+        Narrator narrator = null;
+        if (narratorIdStr != null && !narratorIdStr.isEmpty()) {
+            try {
+                long nid = Long.parseLong(narratorIdStr);
+                narrator = getNarratorById(nid);
+            } catch (NumberFormatException e) {
+            }
+        }
 
         try {
-            int duration = Integer.parseInt(durationStr);
-            long narratorId = Long.parseLong(narratorIdStr);
-            double price = Double.parseDouble(priceStr);
-            
-            if (duration <= 0) return new Response("La duración debe ser mayor a 0.", Status.BAD_REQUEST);
+            Book newBook = BookFactory.createBook(type, title, authors, isbn, publisher, price, genre, format, extraParams, narrator);
+            bookRepo.addBook(newBook);
+            support.firePropertyChange("NewBook", null, newBook);
+            return new Response("Libro (" + type + ") creado exitosamente.", Status.CREATED);
 
-            ArrayList<Author> authors = getAuthorsByIds(authorIds);
-            Publisher publisher = getPublisherByNit(publisherNit);
-            Narrator narrator = getNarratorById(narratorId);
-            
-            if (narrator == null) return new Response("El narrador seleccionado no existe.", Status.BAD_REQUEST);
-
-            Audiobook book = new Audiobook(title, authors, isbn, genre, format, price, publisher, duration, narrator);
-            storage.getBooks().add(book);
-            
-            // Notificamos a la vista (Patrón Observer)
-            support.firePropertyChange("NewBook", null, book);
-
-            return new Response("Audiolibro creado exitosamente.", Status.CREATED);
         } catch (NumberFormatException e) {
-            return new Response("La duración debe ser un número entero.", Status.BAD_REQUEST);
+            return new Response("Error en datos numéricos: " + e.getMessage(), Status.BAD_REQUEST);
+        } catch (IllegalArgumentException e) {
+            return new Response(e.getMessage(), Status.BAD_REQUEST);
         }
     }
-    
+
     private ArrayList<Author> getAuthorsByIds(ArrayList<String> ids) {
         ArrayList<Author> found = new ArrayList<>();
         for (String idStr : ids) {
             try {
                 long id = Long.parseLong(idStr);
-                for (Author a : storage.getAuthors()) {
-                    if (a.getId() == id) found.add(a);
+                for (Author a : personRepo.getAuthors()) {
+                    if (a.getId() == id) {
+                        found.add(a);
+                    }
                 }
-            } catch (NumberFormatException e) { }
+            } catch (NumberFormatException e) {
+            }
         }
         return found;
     }
 
     private Publisher getPublisherByNit(String nit) {
-        for (Publisher p : storage.getPublishers()) {
-            if (p.getNit().equals(nit)) return p;
+        for (Publisher p : standRepo.getPublishers()) {
+            if (p.getNit().equals(nit)) {
+                return p;
+            }
         }
         return null;
     }
-    
+
     private Narrator getNarratorById(long id) {
-        for (Narrator n : storage.getNarrators()) {
-            if (n.getId() == id) return n;
+        for (Narrator n : personRepo.getNarrators()) {
+            if (n.getId() == id) {
+                return n;
+            }
         }
         return null;
     }
-    public ArrayList<Book> getBooksByAuthor(long authorId){
-         ArrayList<Book> result = new ArrayList<>();
-    for (Book b : storage.getBooks()) {
-         for (Author a : b.getAuthors()) {
-             if (a.getId() == authorId) {
-                 result.add(b);
-                 break;
-             }
-         }
+
+    public ArrayList<Book> getBooks() {
+        ArrayList<Book> copies = new ArrayList<>();
+        for (Book b : bookRepo.getBooks()) {
+            copies.add(b.clone());
+        }
+
+        Collections.sort(copies, new java.util.Comparator<Book>() {
+            @Override
+            public int compare(Book b1, Book b2) {
+                return b1.getIsbn().compareTo(b2.getIsbn());
+            }
+        });
+
+        return copies;
     }
+
+    public ArrayList<Book> getBooksByAuthor(long authorId) {
+        ArrayList<Book> result = new ArrayList<>();
+        for (Book b : bookRepo.getBooks()) {
+            for (Author a : b.getAuthors()) {
+                if (a.getId() == authorId) {
+                    result.add(b.clone());
+                    break;
+                }
+            }
+        }
+
+        Collections.sort(result, new java.util.Comparator<Book>() {
+            @Override
+            public int compare(Book b1, Book b2) {
+                return b1.getIsbn().compareTo(b2.getIsbn());
+            }
+        });
+
         return result;
-}
-    // IMPORTANTE: Retornar copia para Encapsulamiento
-    public ArrayList<Book> getBooks() { 
-        return new ArrayList<>(storage.getBooks()); 
+    }
+
+    public ArrayList<Book> getBooksByFormat(String format) {
+        ArrayList<Book> result = new ArrayList<>();
+        for (Book b : bookRepo.getBooks()) {
+            if (b.getFormat() != null && b.getFormat().equals(format)) {
+                result.add(b.clone());
+            }
+        }
+
+        Collections.sort(result, new java.util.Comparator<Book>() {
+            @Override
+            public int compare(Book b1, Book b2) {
+                return b1.getIsbn().compareTo(b2.getIsbn());
+            }
+        });
+
+        return result;
     }
 }

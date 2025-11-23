@@ -6,11 +6,16 @@ package core.models.storage;
  */
 
 
-import core.models.*;
+
+import core.models.Author;
+import core.models.Book;
+import core.models.Manager;
+import core.models.Narrator;
+import core.models.Publisher;
+import core.models.Stand;
 import java.util.ArrayList;
 
-// Implementa la interfaz para cumplir DIP
-public class Storage implements IStorage {
+public class Storage implements IBookRepository, IPersonRepository, IStandRepository {
     
     private static Storage instance;
     
@@ -21,7 +26,6 @@ public class Storage implements IStorage {
     private ArrayList<Publisher> publishers;
     private ArrayList<Book> books;
 
-    // Constructor privado para Singleton
     private Storage() {
         this.stands = new ArrayList<>();
         this.authors = new ArrayList<>();
@@ -38,11 +42,21 @@ public class Storage implements IStorage {
         return instance;
     }
 
-    @Override public ArrayList<Stand> getStands() { return stands; }
+    // --- Implementación IBookRepository ---
+    @Override public ArrayList<Book> getBooks() { return books; }
+    @Override public void addBook(Book book) { this.books.add(book); }
+
+    // --- Implementación IPersonRepository ---
     @Override public ArrayList<Author> getAuthors() { return authors; }
     @Override public ArrayList<Manager> getManagers() { return managers; }
     @Override public ArrayList<Narrator> getNarrators() { return narrators; }
+    @Override public void addAuthor(Author author) { this.authors.add(author); }
+    @Override public void addManager(Manager manager) { this.managers.add(manager); }
+    @Override public void addNarrator(Narrator narrator) { this.narrators.add(narrator); }
+
+    // --- Implementación IStandRepository ---
+    @Override public ArrayList<Stand> getStands() { return stands; }
     @Override public ArrayList<Publisher> getPublishers() { return publishers; }
-    @Override public ArrayList<Book> getBooks() { return books; }
-    
+    @Override public void addStand(Stand stand) { this.stands.add(stand); }
+    @Override public void addPublisher(Publisher publisher) { this.publishers.add(publisher); }
 }

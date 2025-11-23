@@ -4,23 +4,14 @@
  */
 package core.models.storage;
 
-/**
- *
- * @author Juan
- */
-import core.models.Author;
-import core.models.Book;
-import core.models.Manager;
-import core.models.Narrator;
 import core.models.Publisher;
 import core.models.Stand;
 import java.util.ArrayList;
 
-public interface IStorage {
+public interface IStandRepository {
     ArrayList<Stand> getStands();
-    ArrayList<Author> getAuthors();
-    ArrayList<Manager> getManagers();
-    ArrayList<Narrator> getNarrators();
     ArrayList<Publisher> getPublishers();
-    ArrayList<Book> getBooks();
+    
+    void addStand(Stand stand);
+    void addPublisher(Publisher publisher);
 }

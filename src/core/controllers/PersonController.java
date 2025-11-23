@@ -6,88 +6,82 @@ import core.models.Author;
 import core.models.Manager;
 import core.models.Narrator;
 import core.models.Person;
-import core.models.storage.Storage;
+import core.models.storage.IPersonRepository;
 import java.util.ArrayList;
+import java.util.Collections;
 
-/**
- *
- * @author Juan
- */
 public class PersonController {
 
-    private Storage storage;
+    private final IPersonRepository personRepo;
 
-    public PersonController() {
-        this.storage = Storage.getInstance();
+    public PersonController(IPersonRepository personRepo) {
+        this.personRepo = personRepo;
     }
 
     public Response createAuthor(String idStr, String name, String lastname) {
         Response validation = validateCommonData(idStr, name, lastname);
-        if (!validation.getMessage().equals("OK")) {
-            return validation;
-        }
+        if (!validation.getMessage().equals("OK")) return validation;
+        
         long id = Long.parseLong(idStr);
-        Author newAuthor = new Author(id, name, lastname);
-        storage.getAuthors().add(newAuthor);
+        personRepo.addAuthor(new Author(id, name, lastname));
         return new Response("Autor creado exitosamente.", Status.CREATED);
     }
 
     public Response createManager(String idStr, String name, String lastname) {
         Response validation = validateCommonData(idStr, name, lastname);
-        if (!validation.getMessage().equals("OK")) {
-            return validation;
-        }
+        if (!validation.getMessage().equals("OK")) return validation;
+        
         long id = Long.parseLong(idStr);
-        Manager newManager = new Manager(id, name, lastname);
-        storage.getManagers().add(newManager);
+        personRepo.addManager(new Manager(id, name, lastname));
         return new Response("Gerente creado exitosamente.", Status.CREATED);
     }
 
     public Response createNarrator(String idStr, String name, String lastname) {
         Response validation = validateCommonData(idStr, name, lastname);
-        if (!validation.getMessage().equals("OK")) {
-            return validation;
-        }
+        if (!validation.getMessage().equals("OK")) return validation;
+        
         long id = Long.parseLong(idStr);
-        Narrator newNarrator = new Narrator(id, name, lastname);
-        storage.getNarrators().add(newNarrator);
+        personRepo.addNarrator(new Narrator(id, name, lastname));
         return new Response("Narrador creado exitosamente.", Status.CREATED);
     }
 
-    // Getters con copia para Encapsulamiento
     public ArrayList<Author> getAuthors() {
-        return new ArrayList<>(storage.getAuthors());
+        ArrayList<Author> copies = new ArrayList<>();
+        for (Author a : personRepo.getAuthors()) copies.add(a.clone());
+        Collections.sort(copies, (p1, p2) -> Long.compare(p1.getId(), p2.getId()));
+        return copies;
     }
 
     public ArrayList<Manager> getManagers() {
-        return new ArrayList<>(storage.getManagers());
+        ArrayList<Manager> copies = new ArrayList<>();
+        for (Manager m : personRepo.getManagers()) copies.add(m.clone());
+        Collections.sort(copies, (p1, p2) -> Long.compare(p1.getId(), p2.getId()));
+        return copies;
     }
 
     public ArrayList<Narrator> getNarrators() {
-        return new ArrayList<>(storage.getNarrators());
+        ArrayList<Narrator> copies = new ArrayList<>();
+        for (Narrator n : personRepo.getNarrators()) copies.add(n.clone());
+        Collections.sort(copies, (p1, p2) -> Long.compare(p1.getId(), p2.getId()));
+        return copies;
     }
-
-    // IMPORTANTE: Este método faltaba y es el que pide la vista ahora
+    
     public ArrayList<Author> getAuthorsWithMostBooksInDifferentPublishers() {
-        ArrayList<Author> allAuthors = storage.getAuthors();
+        ArrayList<Author> allAuthors = personRepo.getAuthors();
         ArrayList<Author> topAuthors = new ArrayList<>();
         if (allAuthors.isEmpty()) return topAuthors;
 
         int maxPublishers = -1;
-        // Lógica de negocio en el controlador, NO en la vista
         for (Author a : allAuthors) {
             int qty = a.getPublisherQuantity(); 
-            if (qty > maxPublishers) {
-                maxPublishers = qty;
-            }
+            if (qty > maxPublishers) maxPublishers = qty;
         }
         if (maxPublishers > 0) {
             for (Author a : allAuthors) {
-                if (a.getPublisherQuantity() == maxPublishers) {
-                    topAuthors.add(a);
-                }
+                if (a.getPublisherQuantity() == maxPublishers) topAuthors.add(a.clone());
             }
         }
+        Collections.sort(topAuthors, (p1, p2) -> Long.compare(p1.getId(), p2.getId()));
         return topAuthors;
     }
 
@@ -98,16 +92,15 @@ public class PersonController {
         } catch (NumberFormatException e) {
             return new Response("El ID debe ser numérico.", Status.BAD_REQUEST);
         }
-        if (id < 0) {
-            return new Response("El ID debe ser positivo.", Status.BAD_REQUEST);
-        }
-        if (idStr.length() > 15) {
-            return new Response("El ID no debe superar los 15 dígitos.", Status.BAD_REQUEST);
-        }
+        if (id < 0) return new Response("El ID debe ser positivo.", Status.BAD_REQUEST);
+        if (idStr.length() > 15) return new Response("El ID no debe superar los 15 dígitos.", Status.BAD_REQUEST);
         if (name == null || name.trim().isEmpty() || lastname == null || lastname.trim().isEmpty()) {
             return new Response("El nombre y apellido son obligatorios.", Status.BAD_REQUEST);
         }
-        if (personExists(id, storage.getAuthors())|| personExists(id, storage.getManagers()) || personExists(id, storage.getNarrators())) {
+        
+        if (personExists(id, personRepo.getAuthors()) || 
+            personExists(id, personRepo.getManagers()) || 
+            personExists(id, personRepo.getNarrators())) {
             return new Response("Ya existe una persona registrada con ese ID.", Status.BAD_REQUEST);
         }
         return new Response("OK", Status.OK);
@@ -115,9 +108,7 @@ public class PersonController {
 
     private <T extends Person> boolean personExists(long id, ArrayList<T> people) {
         for (Person p : people) {
-            if (p.getId() == id) {
-                return true;
-            }
+            if (p.getId() == id) return true;
         }
         return false;
     }

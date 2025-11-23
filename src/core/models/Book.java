@@ -4,19 +4,16 @@ package core.models;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
-
 import java.util.ArrayList;
 
 /**
  *
  * @author edangulo
  */
-public abstract class Book {
-    
+public abstract class Book implements Cloneable {
     protected String title;
     protected ArrayList<Author> authors;
-    protected final String isbn;
+    protected String isbn;
     protected String genre;
     protected String format;
     protected double value;
@@ -30,39 +27,24 @@ public abstract class Book {
         this.format = format;
         this.value = value;
         this.publisher = publisher;
-        
-        for (Author autor : this.authors) {
-            autor.addBook(this);
+    }
+
+    public abstract String getSpecificInfo();
+
+    public String getTitle() { return title; }
+    public ArrayList<Author> getAuthors() { return authors; }
+    public String getIsbn() { return isbn; }
+    public String getGenre() { return genre; }
+    public String getFormat() { return format; }
+    public double getValue() { return value; }
+    public Publisher getPublisher() { return publisher; }
+
+    @Override
+    public Book clone() {
+        try {
+            return (Book) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
         }
-        this.publisher.addBook(this);
     }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public ArrayList<Author> getAuthors() {
-        return authors;
-    }
-
-    public String getIsbn() {
-        return isbn;
-    }
-
-    public String getGenre() {
-        return genre;
-    }
-
-    public String getFormat() {
-        return format;
-    }
-
-    public double getValue() {
-        return value;
-    }
-
-    public Publisher getPublisher() {
-        return publisher;
-    }
-    
 }

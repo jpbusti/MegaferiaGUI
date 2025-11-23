@@ -13,7 +13,6 @@ import java.util.ArrayList;
  * @author edangulo
  */
 public class PrintedBook extends Book {
-    
     private int pages;
     private int copies;
 
@@ -23,12 +22,11 @@ public class PrintedBook extends Book {
         this.copies = copies;
     }
 
-    public int getPages() {
-        return pages;
+    @Override
+    public String getSpecificInfo() {
+        return "Páginas: " + pages + ", Ejemplares: " + copies;
     }
 
-    public int getCopies() {
-        return copies;
-    }
-    
+    public int getPages() { return pages; }
+    public int getCopies() { return copies; }
 }
