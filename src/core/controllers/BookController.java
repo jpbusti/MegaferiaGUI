@@ -17,19 +17,19 @@ import java.util.Comparator;
 import java.util.Map;
 
 public class BookController {
-
+    
     private final IBookRepository bookRepo;
     private final IPersonRepository personRepo;
     private final IStandRepository standRepo;
     private final PropertyChangeSupport support;
-
+    
     public BookController(IBookRepository bookRepo, IPersonRepository personRepo, IStandRepository standRepo) {
         this.bookRepo = bookRepo;
         this.personRepo = personRepo;
         this.standRepo = standRepo;
         this.support = new PropertyChangeSupport(this);
     }
-
+    
     public void addPropertyChangeListener(java.beans.PropertyChangeListener pcl) {
         support.addPropertyChangeListener(pcl);
     }
