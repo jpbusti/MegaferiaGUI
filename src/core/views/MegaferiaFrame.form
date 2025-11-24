@@ -74,7 +74,7 @@
                 <Property name="useNullLayout" type="boolean" value="false"/>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel1">
+                <Component class="javax.swing.JLabel" name="LabelPrecioStand">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="18" style="0"/>
@@ -87,7 +87,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel2">
+                <Component class="javax.swing.JLabel" name="labelIDStand">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="18" style="0"/>
@@ -100,7 +100,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtPrecioStando">
+                <Component class="javax.swing.JTextField" name="txtPrecioStand">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="18" style="0"/>
@@ -108,7 +108,7 @@
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPrecioStandoActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPrecioStandActionPerformed"/>
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -168,18 +168,18 @@
                                   <EmptySpace min="-2" pref="264" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                                          <Component id="LabelApellidoPersona" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="21" pref="21" max="-2" attributes="0"/>
                                           <Component id="txtApellidoPersona" min="-2" pref="150" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                                              <Component id="LabelIDPersona" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="32767" attributes="0"/>
                                               <Component id="txtIDPersona" min="-2" pref="150" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="LabelNombrePersona" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace min="21" pref="21" max="-2" attributes="0"/>
                                               <Component id="txtNombrePersona" min="-2" pref="150" max="-2" attributes="0"/>
                                           </Group>
@@ -204,17 +204,17 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="153" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="LabelIDPersona" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtIDPersona" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                              <Component id="LabelNombrePersona" min="-2" max="-2" attributes="0"/>
                               <Component id="txtNombrePersona" min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="LabelApellidoPersona" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="txtApellidoPersona" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
@@ -229,7 +229,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel3">
+                <Component class="javax.swing.JLabel" name="LabelNombrePersona">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="18" style="0"/>
@@ -237,7 +237,7 @@
                     <Property name="text" type="java.lang.String" value="Nombre"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel4">
+                <Component class="javax.swing.JLabel" name="LabelIDPersona">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="18" style="0"/>
@@ -289,7 +289,7 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtApellidoPersonaActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel5">
+                <Component class="javax.swing.JLabel" name="LabelApellidoPersona">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="18" style="0"/>
@@ -338,17 +338,17 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="273" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                                      <Component id="LabelDireccionEditorial" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="LaberNITEditorial" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="LabelNombreEditorial" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="LabelGerenteEditorial" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jTextField6" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jTextField7" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jTextField8" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jComboBox1" alignment="1" min="-2" pref="178" max="-2" attributes="0"/>
+                                      <Component id="txtNITEditorial" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtNombreEditorial" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtDireccionEditorial" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="cmbGerenteEditorial" alignment="1" min="-2" pref="178" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -366,25 +366,25 @@
                           <EmptySpace min="-2" pref="144" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                                  <Component id="LaberNITEditorial" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                                  <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                                  <Component id="LabelNombreEditorial" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField8" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="LabelDireccionEditorial" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtDireccionEditorial" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jTextField6" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="txtNITEditorial" min="-2" pref="30" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
-                                  <Component id="jTextField7" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="txtNombreEditorial" min="-2" pref="30" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                              <Component id="cmbGerenteEditorial" min="-2" max="-2" attributes="0"/>
+                              <Component id="LabelGerenteEditorial" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                           <Component id="btnCrearEditorial" min="-2" pref="40" max="-2" attributes="0"/>
@@ -394,7 +394,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel6">
+                <Component class="javax.swing.JLabel" name="LaberNITEditorial">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="18" style="0"/>
@@ -402,7 +402,7 @@
                     <Property name="text" type="java.lang.String" value="NIT"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField6">
+                <Component class="javax.swing.JTextField" name="txtNITEditorial">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="18" style="0"/>
@@ -410,10 +410,10 @@
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField6ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNITEditorialActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField7">
+                <Component class="javax.swing.JTextField" name="txtNombreEditorial">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="18" style="0"/>
@@ -421,10 +421,10 @@
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField7ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNombreEditorialActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel7">
+                <Component class="javax.swing.JLabel" name="LabelNombreEditorial">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="18" style="0"/>
@@ -432,7 +432,7 @@
                     <Property name="text" type="java.lang.String" value="Nombre"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel8">
+                <Component class="javax.swing.JLabel" name="LabelDireccionEditorial">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="18" style="0"/>
@@ -440,7 +440,7 @@
                     <Property name="text" type="java.lang.String" value="Direcci&#xf3;n"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField8">
+                <Component class="javax.swing.JTextField" name="txtDireccionEditorial">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="18" style="0"/>
@@ -448,7 +448,7 @@
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField8ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDireccionEditorialActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnCrearEditorial">
@@ -462,7 +462,7 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCrearEditorialActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel9">
+                <Component class="javax.swing.JLabel" name="LabelGerenteEditorial">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="18" style="0"/>
@@ -470,7 +470,7 @@
                     <Property name="text" type="java.lang.String" value="Gerente"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBox1">
+                <Component class="javax.swing.JComboBox" name="cmbGerenteEditorial">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="18" style="0"/>
@@ -509,8 +509,8 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
+                                      <Component id="LabelNroEjemplaresLibro" min="-2" max="-2" attributes="0"/>
+                                      <Component id="LabelNroPagLibro" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -518,13 +518,13 @@
                                       <Component id="txtNroEjemplares" min="-2" pref="53" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                                  <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
+                                  <Component id="LabelHiperLibro" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                                   <Component id="txtHipervinculo" min="-2" pref="53" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel22" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel21" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="LabelNarradorLibro" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="LabelDuraionLibro" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -538,13 +538,13 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jLabel12" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel16" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="LabelISBNLibro" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="LabelTituloLibro" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="LabelAutoresLibro" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="LabelGeneroLibro" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="LabelTipoLibro" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="LabelFormatoLibro" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="LabelValorLibro" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
@@ -581,7 +581,7 @@
                                           </Group>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
+                                          <Component id="LabelEditorialLibro" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="cmbEditorial" min="-2" pref="185" max="-2" attributes="0"/>
                                       </Group>
@@ -601,22 +601,22 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="LabelTituloLibro" alignment="3" min="-2" max="-2" attributes="0"/>
                                               <Component id="txtTituloLibro" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="LabelAutoresLibro" alignment="3" min="-2" max="-2" attributes="0"/>
                                               <Component id="cmbAutores" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="LabelISBNLibro" alignment="3" min="-2" max="-2" attributes="0"/>
                                               <Component id="txtISBN" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="LabelGeneroLibro" alignment="3" min="-2" max="-2" attributes="0"/>
                                               <Component id="cmbGenero" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -629,24 +629,24 @@
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="LabelTipoLibro" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="rImpreso" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="rDigital" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="rAudioLibro" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="LabelFormatoLibro" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="cmbFormato" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="LabelValorLibro" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="txtValor" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="LabelEditorialLibro" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="cmbEditorial" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -659,24 +659,24 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel20" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="LabelNroEjemplaresLibro" min="-2" max="-2" attributes="0"/>
+                                      <Component id="LabelHiperLibro" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="txtHipervinculo" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
+                                  <Component id="LabelNroPagLibro" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Component id="txtNroEjemplares" min="-2" pref="30" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="txtNroPaginas" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                                      <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="LabelDuraionLibro" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel22" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="LabelNarradorLibro" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="cmbNarrador" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -691,7 +691,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel10">
+                <Component class="javax.swing.JLabel" name="LabelTituloLibro">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="18" style="0"/>
@@ -710,7 +710,7 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTituloLibroActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel11">
+                <Component class="javax.swing.JLabel" name="LabelAutoresLibro">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="18" style="0"/>
@@ -718,7 +718,7 @@
                     <Property name="text" type="java.lang.String" value="Autores"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel12">
+                <Component class="javax.swing.JLabel" name="LabelISBNLibro">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="18" style="0"/>
@@ -737,7 +737,7 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtISBNActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel13">
+                <Component class="javax.swing.JLabel" name="LabelGeneroLibro">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="18" style="0"/>
@@ -796,7 +796,7 @@
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel14">
+                <Component class="javax.swing.JLabel" name="LabelTipoLibro">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="18" style="0"/>
@@ -837,7 +837,7 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rAudioLibroActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel15">
+                <Component class="javax.swing.JLabel" name="LabelFormatoLibro">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="18" style="0"/>
@@ -860,7 +860,7 @@
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel16">
+                <Component class="javax.swing.JLabel" name="LabelValorLibro">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="18" style="0"/>
@@ -879,7 +879,7 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtValorActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel17">
+                <Component class="javax.swing.JLabel" name="LabelEditorialLibro">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="18" style="0"/>
@@ -902,7 +902,7 @@
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel18">
+                <Component class="javax.swing.JLabel" name="LabelNroEjemplaresLibro">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="18" style="0"/>
@@ -921,7 +921,7 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNroPaginasActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel19">
+                <Component class="javax.swing.JLabel" name="LabelNroPagLibro">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="18" style="0"/>
@@ -940,7 +940,7 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNroEjemplaresActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel20">
+                <Component class="javax.swing.JLabel" name="LabelHiperLibro">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="18" style="0"/>
@@ -970,7 +970,7 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDuracionActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel21">
+                <Component class="javax.swing.JLabel" name="LabelDuraionLibro">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="18" style="0"/>
@@ -978,7 +978,7 @@
                     <Property name="text" type="java.lang.String" value="Duracion"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel22">
+                <Component class="javax.swing.JLabel" name="LabelNarradorLibro">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="18" style="0"/>
@@ -1030,7 +1030,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTextArea" name="jTextArea2">
+                    <Component class="javax.swing.JTextArea" name="AreaAutorLibro">
                       <Properties>
                         <Property name="columns" type="int" value="20"/>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -1067,7 +1067,7 @@
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
                                       <Group type="102" attributes="0">
-                                          <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
+                                          <Component id="LabelEditorialesComprar" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="cmbEditorialesComprarStand" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -1082,7 +1082,7 @@
                       </Group>
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                          <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
+                          <Component id="LabelIDStandsComprar" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="cmbIDStands" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -1105,12 +1105,12 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="LabelIDStandsComprar" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="cmbIDStands" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="226" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel23" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="LabelEditorialesComprar" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="cmbEditorialesComprarStand" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -1168,7 +1168,7 @@
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel23">
+                <Component class="javax.swing.JLabel" name="LabelEditorialesComprar">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="18" style="0"/>
@@ -1176,7 +1176,7 @@
                     <Property name="text" type="java.lang.String" value="Editoriales"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel24">
+                <Component class="javax.swing.JLabel" name="LabelIDStandsComprar">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="18" style="0"/>
@@ -1224,7 +1224,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTextArea" name="jTextArea1">
+                    <Component class="javax.swing.JTextArea" name="AreaEditoriales">
                       <Properties>
                         <Property name="columns" type="int" value="20"/>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -1265,7 +1265,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTextArea" name="jTextArea3">
+                    <Component class="javax.swing.JTextArea" name="AreaStands">
                       <Properties>
                         <Property name="columns" type="int" value="20"/>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -1326,7 +1326,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTable" name="jTable1">
+                    <Component class="javax.swing.JTable" name="TableEditoriales">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="5" rowCount="4">
@@ -1401,7 +1401,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTable" name="jTable2">
+                    <Component class="javax.swing.JTable" name="TablePersonas">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="5" rowCount="4">
@@ -1476,7 +1476,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTable" name="jTable3">
+                    <Component class="javax.swing.JTable" name="TableStands">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="4" rowCount="4">
@@ -1528,7 +1528,7 @@
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                                  <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
+                                  <Component id="LabelLibrosShow" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="cmbLibrosShow" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -1543,7 +1543,7 @@
                           <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="cmbLibrosShow" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel25" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="LabelLibrosShow" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jScrollPane7" pref="409" max="32767" attributes="0"/>
@@ -1562,7 +1562,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTable" name="jTable4">
+                    <Component class="javax.swing.JTable" name="TableLibros">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="12" rowCount="4">
@@ -1582,6 +1582,41 @@
                         </Property>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                           <TableColumnModel selectionModel="0">
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
                             <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                               <Title/>
                               <Editor/>
@@ -1646,7 +1681,7 @@
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel25">
+                <Component class="javax.swing.JLabel" name="LabelLibrosShow">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="18" style="0"/>
@@ -1676,13 +1711,13 @@
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
+                                  <Component id="LabelAutorAdicionales" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cmbAutorConsulta" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="btnConsultarAutor" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace pref="22" max="32767" attributes="0"/>
-                                  <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
+                                  <Component id="LabelFormatoAdicionales" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cmbFormatoConsulta" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -1722,10 +1757,10 @@
                           <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel27" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="LabelAutorAdicionales" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="cmbAutorConsulta" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnConsultarAutor" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel28" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="LabelFormatoAdicionales" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="cmbFormatoConsulta" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnConsultarFormato" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -1766,7 +1801,7 @@
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel27">
+                <Component class="javax.swing.JLabel" name="LabelAutorAdicionales">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="18" style="0"/>
@@ -1792,7 +1827,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTable" name="jTable5">
+                    <Component class="javax.swing.JTable" name="TableLibrosAutores">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="12" rowCount="4">
@@ -1846,7 +1881,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JLabel" name="jLabel28">
+                <Component class="javax.swing.JLabel" name="LabelFormatoAdicionales">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="18" style="0"/>
@@ -1905,7 +1940,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTable" name="jTable6">
+                    <Component class="javax.swing.JTable" name="TableACMLEDE">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="3" rowCount="4">

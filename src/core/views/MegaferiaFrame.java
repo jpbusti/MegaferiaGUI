@@ -58,7 +58,7 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
 
         String[] columnNames = {"Titulo", "Autores", "ISBN", "Genero", "Formato", "Valor", "Editorial", "Info Específica"};
         DefaultTableModel model = new DefaultTableModel(columnNames, 0);
-        jTable4.setModel(model);
+        TableLibros.setModel(model);
     }
 
     /**
@@ -73,110 +73,110 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
         jPanel1 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        txtPrecioStando = new javax.swing.JTextField();
+        LabelPrecioStand = new javax.swing.JLabel();
+        labelIDStand = new javax.swing.JLabel();
+        txtPrecioStand = new javax.swing.JTextField();
         txtIDStand = new javax.swing.JTextField();
         btnCrearStand = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        LabelNombrePersona = new javax.swing.JLabel();
+        LabelIDPersona = new javax.swing.JLabel();
         txtIDPersona = new javax.swing.JTextField();
         txtNombrePersona = new javax.swing.JTextField();
         btnCrearAutor = new javax.swing.JButton();
         txtApellidoPersona = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
+        LabelApellidoPersona = new javax.swing.JLabel();
         btnCrearGerente = new javax.swing.JButton();
         btnCrearNarrador = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
+        LaberNITEditorial = new javax.swing.JLabel();
+        txtNITEditorial = new javax.swing.JTextField();
+        txtNombreEditorial = new javax.swing.JTextField();
+        LabelNombreEditorial = new javax.swing.JLabel();
+        LabelDireccionEditorial = new javax.swing.JLabel();
+        txtDireccionEditorial = new javax.swing.JTextField();
         btnCrearEditorial = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        LabelGerenteEditorial = new javax.swing.JLabel();
+        cmbGerenteEditorial = new javax.swing.JComboBox<>();
         jPanel5 = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
+        LabelTituloLibro = new javax.swing.JLabel();
         txtTituloLibro = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        LabelAutoresLibro = new javax.swing.JLabel();
+        LabelISBNLibro = new javax.swing.JLabel();
         txtISBN = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
+        LabelGeneroLibro = new javax.swing.JLabel();
         cmbGenero = new javax.swing.JComboBox<>();
         btnCrearLibro = new javax.swing.JButton();
         cmbAutores = new javax.swing.JComboBox<>();
-        jLabel14 = new javax.swing.JLabel();
+        LabelTipoLibro = new javax.swing.JLabel();
         rImpreso = new javax.swing.JRadioButton();
         rDigital = new javax.swing.JRadioButton();
         rAudioLibro = new javax.swing.JRadioButton();
-        jLabel15 = new javax.swing.JLabel();
+        LabelFormatoLibro = new javax.swing.JLabel();
         cmbFormato = new javax.swing.JComboBox<>();
-        jLabel16 = new javax.swing.JLabel();
+        LabelValorLibro = new javax.swing.JLabel();
         txtValor = new javax.swing.JTextField();
-        jLabel17 = new javax.swing.JLabel();
+        LabelEditorialLibro = new javax.swing.JLabel();
         cmbEditorial = new javax.swing.JComboBox<>();
-        jLabel18 = new javax.swing.JLabel();
+        LabelNroEjemplaresLibro = new javax.swing.JLabel();
         txtNroPaginas = new javax.swing.JTextField();
-        jLabel19 = new javax.swing.JLabel();
+        LabelNroPagLibro = new javax.swing.JLabel();
         txtNroEjemplares = new javax.swing.JTextField();
-        jLabel20 = new javax.swing.JLabel();
+        LabelHiperLibro = new javax.swing.JLabel();
         txtHipervinculo = new javax.swing.JTextField();
         txtDuracion = new javax.swing.JTextField();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
+        LabelDuraionLibro = new javax.swing.JLabel();
+        LabelNarradorLibro = new javax.swing.JLabel();
         cmbNarrador = new javax.swing.JComboBox<>();
         btnAgregarAutor = new javax.swing.JButton();
         btnEliminarAutor = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        AreaAutorLibro = new javax.swing.JTextArea();
         jPanel6 = new javax.swing.JPanel();
         cmbIDStands = new javax.swing.JComboBox<>();
         cmbEditorialesComprarStand = new javax.swing.JComboBox<>();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
+        LabelEditorialesComprar = new javax.swing.JLabel();
+        LabelIDStandsComprar = new javax.swing.JLabel();
         btnAgregarEditorial = new javax.swing.JButton();
         btnComprarStand = new javax.swing.JButton();
         btnEliminarEditorial = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        AreaEditoriales = new javax.swing.JTextArea();
         btonAgregarStand = new javax.swing.JButton();
         btnEliminarStand = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
+        AreaStands = new javax.swing.JTextArea();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TableEditoriales = new javax.swing.JTable();
         btnConsultarEditoriales = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        TablePersonas = new javax.swing.JTable();
         btnConsultarPersonas = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        TableStands = new javax.swing.JTable();
         btnConsultarStands = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        TableLibros = new javax.swing.JTable();
         btnConsultarLibros = new javax.swing.JButton();
         cmbLibrosShow = new javax.swing.JComboBox<>();
-        jLabel25 = new javax.swing.JLabel();
+        LabelLibrosShow = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
         cmbAutorConsulta = new javax.swing.JComboBox<>();
-        jLabel27 = new javax.swing.JLabel();
+        LabelAutorAdicionales = new javax.swing.JLabel();
         btnConsultarAutor = new javax.swing.JButton();
         jScrollPane8 = new javax.swing.JScrollPane();
-        jTable5 = new javax.swing.JTable();
-        jLabel28 = new javax.swing.JLabel();
+        TableLibrosAutores = new javax.swing.JTable();
+        LabelFormatoAdicionales = new javax.swing.JLabel();
         cmbFormatoConsulta = new javax.swing.JComboBox<>();
         btnConsultarFormato = new javax.swing.JButton();
         jLabel29 = new javax.swing.JLabel();
         jScrollPane9 = new javax.swing.JScrollPane();
-        jTable6 = new javax.swing.JTable();
+        TableACMLEDE = new javax.swing.JTable();
         btnConsultarAutoresMasLibros = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -184,22 +184,22 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jLabel1.setText("Precio");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 220, -1, -1));
+        LabelPrecioStand.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        LabelPrecioStand.setText("Precio");
+        jPanel2.add(LabelPrecioStand, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 220, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jLabel2.setText("ID");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, -1, -1));
+        labelIDStand.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        labelIDStand.setText("ID");
+        jPanel2.add(labelIDStand, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, -1, -1));
 
-        txtPrecioStando.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        txtPrecioStando.setToolTipText("");
-        txtPrecioStando.addActionListener(new java.awt.event.ActionListener() {
+        txtPrecioStand.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        txtPrecioStand.setToolTipText("");
+        txtPrecioStand.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPrecioStandoActionPerformed(evt);
+                txtPrecioStandActionPerformed(evt);
             }
         });
-        jPanel2.add(txtPrecioStando, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 220, 150, 30));
+        jPanel2.add(txtPrecioStand, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 220, 150, 30));
 
         txtIDStand.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         txtIDStand.setToolTipText("");
@@ -221,11 +221,11 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
 
         jTabbedPane1.addTab("Stand", jPanel2);
 
-        jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jLabel3.setText("Nombre");
+        LabelNombrePersona.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        LabelNombrePersona.setText("Nombre");
 
-        jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jLabel4.setText("ID");
+        LabelIDPersona.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        LabelIDPersona.setText("ID");
 
         txtIDPersona.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         txtIDPersona.setToolTipText("");
@@ -259,8 +259,8 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jLabel5.setText("Apellido");
+        LabelApellidoPersona.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        LabelApellidoPersona.setText("Apellido");
 
         btnCrearGerente.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         btnCrearGerente.setText("Crear Gerente");
@@ -288,16 +288,16 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
                         .addGap(264, 264, 264)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
+                                .addComponent(LabelApellidoPersona)
                                 .addGap(21, 21, 21)
                                 .addComponent(txtApellidoPersona, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                    .addComponent(jLabel4)
+                                    .addComponent(LabelIDPersona)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(txtIDPersona, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                    .addComponent(jLabel3)
+                                    .addComponent(LabelNombrePersona)
                                     .addGap(21, 21, 21)
                                     .addComponent(txtNombrePersona, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -314,15 +314,15 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(153, 153, 153)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
+                    .addComponent(LabelIDPersona)
                     .addComponent(txtIDPersona, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(13, 13, 13)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
+                    .addComponent(LabelNombrePersona)
                     .addComponent(txtNombrePersona, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
+                    .addComponent(LabelApellidoPersona)
                     .addComponent(txtApellidoPersona, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -334,36 +334,36 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
 
         jTabbedPane1.addTab("Persona", jPanel3);
 
-        jLabel6.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jLabel6.setText("NIT");
+        LaberNITEditorial.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        LaberNITEditorial.setText("NIT");
 
-        jTextField6.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jTextField6.setToolTipText("");
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+        txtNITEditorial.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        txtNITEditorial.setToolTipText("");
+        txtNITEditorial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+                txtNITEditorialActionPerformed(evt);
             }
         });
 
-        jTextField7.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jTextField7.setToolTipText("");
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+        txtNombreEditorial.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        txtNombreEditorial.setToolTipText("");
+        txtNombreEditorial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
+                txtNombreEditorialActionPerformed(evt);
             }
         });
 
-        jLabel7.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jLabel7.setText("Nombre");
+        LabelNombreEditorial.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        LabelNombreEditorial.setText("Nombre");
 
-        jLabel8.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jLabel8.setText("Dirección");
+        LabelDireccionEditorial.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        LabelDireccionEditorial.setText("Dirección");
 
-        jTextField8.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jTextField8.setToolTipText("");
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+        txtDireccionEditorial.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        txtDireccionEditorial.setToolTipText("");
+        txtDireccionEditorial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
+                txtDireccionEditorialActionPerformed(evt);
             }
         });
 
@@ -375,11 +375,11 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
             }
         });
 
-        jLabel9.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jLabel9.setText("Gerente");
+        LabelGerenteEditorial.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        LabelGerenteEditorial.setText("Gerente");
 
-        jComboBox1.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione uno..." }));
+        cmbGerenteEditorial.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        cmbGerenteEditorial.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione uno..." }));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -390,16 +390,16 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(273, 273, 273)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel9))
+                            .addComponent(LabelDireccionEditorial)
+                            .addComponent(LaberNITEditorial)
+                            .addComponent(LabelNombreEditorial)
+                            .addComponent(LabelGerenteEditorial))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField6)
-                            .addComponent(jTextField7)
-                            .addComponent(jTextField8)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtNITEditorial)
+                            .addComponent(txtNombreEditorial)
+                            .addComponent(txtDireccionEditorial)
+                            .addComponent(cmbGerenteEditorial, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(361, 361, 361)
                         .addComponent(btnCrearEditorial, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -411,21 +411,21 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
                 .addGap(144, 144, 144)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
+                        .addComponent(LaberNITEditorial)
                         .addGap(15, 15, 15)
-                        .addComponent(jLabel7)
+                        .addComponent(LabelNombreEditorial)
                         .addGap(20, 20, 20)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(LabelDireccionEditorial)
+                            .addComponent(txtDireccionEditorial, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtNITEditorial, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(13, 13, 13)
-                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtNombreEditorial, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
+                    .addComponent(cmbGerenteEditorial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabelGerenteEditorial))
                 .addGap(46, 46, 46)
                 .addComponent(btnCrearEditorial, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(163, Short.MAX_VALUE))
@@ -433,8 +433,8 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
 
         jTabbedPane1.addTab("Editorial", jPanel4);
 
-        jLabel10.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jLabel10.setText("Titulo");
+        LabelTituloLibro.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        LabelTituloLibro.setText("Titulo");
 
         txtTituloLibro.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         txtTituloLibro.setToolTipText("");
@@ -444,11 +444,11 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
             }
         });
 
-        jLabel11.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jLabel11.setText("Autores");
+        LabelAutoresLibro.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        LabelAutoresLibro.setText("Autores");
 
-        jLabel12.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jLabel12.setText("ISBN");
+        LabelISBNLibro.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        LabelISBNLibro.setText("ISBN");
 
         txtISBN.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         txtISBN.setToolTipText("");
@@ -458,8 +458,8 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
             }
         });
 
-        jLabel13.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jLabel13.setText("Genero");
+        LabelGeneroLibro.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        LabelGeneroLibro.setText("Genero");
 
         cmbGenero.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         cmbGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione uno...", "Fantasía urbana", "Ciencia ficción distópica", "Realismo mágico", "Romance histórico", "Thriller psicológico", "Ficción filosófica", "Aventura steampunk", "Terror gótico", "No ficción narrativa", "Ficción postapocalíptica" }));
@@ -475,8 +475,8 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
         cmbAutores.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         cmbAutores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione uno..." }));
 
-        jLabel14.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jLabel14.setText("Tipo");
+        LabelTipoLibro.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        LabelTipoLibro.setText("Tipo");
 
         rImpreso.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         rImpreso.setText("Impreso");
@@ -502,14 +502,14 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
             }
         });
 
-        jLabel15.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jLabel15.setText("Formato");
+        LabelFormatoLibro.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        LabelFormatoLibro.setText("Formato");
 
         cmbFormato.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         cmbFormato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione uno..." }));
 
-        jLabel16.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jLabel16.setText("Valor");
+        LabelValorLibro.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        LabelValorLibro.setText("Valor");
 
         txtValor.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         txtValor.setToolTipText("");
@@ -519,14 +519,14 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
             }
         });
 
-        jLabel17.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jLabel17.setText("Editorial");
+        LabelEditorialLibro.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        LabelEditorialLibro.setText("Editorial");
 
         cmbEditorial.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         cmbEditorial.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione uno..." }));
 
-        jLabel18.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jLabel18.setText("Nro. Ejemplares");
+        LabelNroEjemplaresLibro.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        LabelNroEjemplaresLibro.setText("Nro. Ejemplares");
 
         txtNroPaginas.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         txtNroPaginas.setToolTipText("");
@@ -536,8 +536,8 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
             }
         });
 
-        jLabel19.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jLabel19.setText("Nro. Paginas");
+        LabelNroPagLibro.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        LabelNroPagLibro.setText("Nro. Paginas");
 
         txtNroEjemplares.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         txtNroEjemplares.setToolTipText("");
@@ -547,8 +547,8 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
             }
         });
 
-        jLabel20.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jLabel20.setText("Hipervinculo");
+        LabelHiperLibro.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        LabelHiperLibro.setText("Hipervinculo");
 
         txtHipervinculo.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         txtHipervinculo.setToolTipText("");
@@ -566,11 +566,11 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
             }
         });
 
-        jLabel21.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jLabel21.setText("Duracion");
+        LabelDuraionLibro.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        LabelDuraionLibro.setText("Duracion");
 
-        jLabel22.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jLabel22.setText("Narrador");
+        LabelNarradorLibro.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        LabelNarradorLibro.setText("Narrador");
 
         cmbNarrador.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         cmbNarrador.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione uno..." }));
@@ -591,11 +591,11 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
             }
         });
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jTextArea2.setRows(5);
-        jTextArea2.setEnabled(false);
-        jScrollPane2.setViewportView(jTextArea2);
+        AreaAutorLibro.setColumns(20);
+        AreaAutorLibro.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        AreaAutorLibro.setRows(5);
+        AreaAutorLibro.setEnabled(false);
+        jScrollPane2.setViewportView(AreaAutorLibro);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -610,20 +610,20 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel18)
-                            .addComponent(jLabel19))
+                            .addComponent(LabelNroEjemplaresLibro)
+                            .addComponent(LabelNroPagLibro))
                         .addGap(20, 20, 20)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtNroPaginas, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtNroEjemplares, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(28, 28, 28)
-                        .addComponent(jLabel20)
+                        .addComponent(LabelHiperLibro)
                         .addGap(16, 16, 16)
                         .addComponent(txtHipervinculo, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel22)
-                            .addComponent(jLabel21))
+                            .addComponent(LabelNarradorLibro)
+                            .addComponent(LabelDuraionLibro))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cmbNarrador, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -634,13 +634,13 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel12)
-                                    .addComponent(jLabel10)
-                                    .addComponent(jLabel11)
-                                    .addComponent(jLabel13)
-                                    .addComponent(jLabel14)
-                                    .addComponent(jLabel15)
-                                    .addComponent(jLabel16))
+                                    .addComponent(LabelISBNLibro)
+                                    .addComponent(LabelTituloLibro)
+                                    .addComponent(LabelAutoresLibro)
+                                    .addComponent(LabelGeneroLibro)
+                                    .addComponent(LabelTipoLibro)
+                                    .addComponent(LabelFormatoLibro)
+                                    .addComponent(LabelValorLibro))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel5Layout.createSequentialGroup()
@@ -667,7 +667,7 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
                                         .addGap(18, 18, 18)
                                         .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE))))
                             .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(jLabel17)
+                                .addComponent(LabelEditorialLibro)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cmbEditorial, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
@@ -681,19 +681,19 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addGap(23, 23, 23)
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel10)
+                                    .addComponent(LabelTituloLibro)
                                     .addComponent(txtTituloLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(10, 10, 10)
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel11)
+                                    .addComponent(LabelAutoresLibro)
                                     .addComponent(cmbAutores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel12)
+                                    .addComponent(LabelISBNLibro)
                                     .addComponent(txtISBN, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(17, 17, 17)
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel13)
+                                    .addComponent(LabelGeneroLibro)
                                     .addComponent(cmbGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addGap(37, 37, 37)
@@ -702,21 +702,21 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
                                 .addComponent(btnEliminarAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel14)
+                            .addComponent(LabelTipoLibro)
                             .addComponent(rImpreso)
                             .addComponent(rDigital)
                             .addComponent(rAudioLibro))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel15)
+                            .addComponent(LabelFormatoLibro)
                             .addComponent(cmbFormato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel16)
+                            .addComponent(LabelValorLibro)
                             .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel17)
+                            .addComponent(LabelEditorialLibro)
                             .addComponent(cmbEditorial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(37, 37, 37)
@@ -725,20 +725,20 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel18)
-                            .addComponent(jLabel20)
+                            .addComponent(LabelNroEjemplaresLibro)
+                            .addComponent(LabelHiperLibro)
                             .addComponent(txtHipervinculo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel19))
+                        .addComponent(LabelNroPagLibro))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(txtNroEjemplares, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtNroPaginas, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel21)))
+                            .addComponent(LabelDuraionLibro)))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel22)
+                            .addComponent(LabelNarradorLibro)
                             .addComponent(cmbNarrador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(txtDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -755,11 +755,11 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
         cmbEditorialesComprarStand.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         cmbEditorialesComprarStand.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione uno..." }));
 
-        jLabel23.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jLabel23.setText("Editoriales");
+        LabelEditorialesComprar.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        LabelEditorialesComprar.setText("Editoriales");
 
-        jLabel24.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jLabel24.setText("ID Stands");
+        LabelIDStandsComprar.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        LabelIDStandsComprar.setText("ID Stands");
 
         btnAgregarEditorial.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         btnAgregarEditorial.setText("Agregar Editorial");
@@ -785,11 +785,11 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jTextArea1.setRows(5);
-        jTextArea1.setEnabled(false);
-        jScrollPane1.setViewportView(jTextArea1);
+        AreaEditoriales.setColumns(20);
+        AreaEditoriales.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        AreaEditoriales.setRows(5);
+        AreaEditoriales.setEnabled(false);
+        jScrollPane1.setViewportView(AreaEditoriales);
 
         btonAgregarStand.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         btonAgregarStand.setText("Agregar Stand");
@@ -807,11 +807,11 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
             }
         });
 
-        jTextArea3.setColumns(20);
-        jTextArea3.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jTextArea3.setRows(5);
-        jTextArea3.setEnabled(false);
-        jScrollPane3.setViewportView(jTextArea3);
+        AreaStands.setColumns(20);
+        AreaStands.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        AreaStands.setRows(5);
+        AreaStands.setEnabled(false);
+        jScrollPane3.setViewportView(AreaStands);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -827,7 +827,7 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(jLabel23)
+                                .addComponent(LabelEditorialesComprar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cmbEditorialesComprarStand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -837,7 +837,7 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
                         .addGap(189, 189, 189))))
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jLabel24)
+                .addComponent(LabelIDStandsComprar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cmbIDStands, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -856,11 +856,11 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel24)
+                            .addComponent(LabelIDStandsComprar)
                             .addComponent(cmbIDStands, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(226, 226, 226)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel23)
+                            .addComponent(LabelEditorialesComprar)
                             .addComponent(cmbEditorialesComprarStand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -881,7 +881,7 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
 
         jTabbedPane1.addTab("Comprar Stand", jPanel6);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TableEditoriales.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -900,7 +900,7 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane4.setViewportView(jTable1);
+        jScrollPane4.setViewportView(TableEditoriales);
 
         btnConsultarEditoriales.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         btnConsultarEditoriales.setText("Consultar");
@@ -936,7 +936,7 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
 
         jTabbedPane1.addTab("Show Editoriales", jPanel7);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        TablePersonas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -955,7 +955,7 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane5.setViewportView(jTable2);
+        jScrollPane5.setViewportView(TablePersonas);
 
         btnConsultarPersonas.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         btnConsultarPersonas.setText("Consultar");
@@ -991,7 +991,7 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
 
         jTabbedPane1.addTab("Show Personas", jPanel8);
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        TableStands.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -1010,7 +1010,7 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane6.setViewportView(jTable3);
+        jScrollPane6.setViewportView(TableStands);
 
         btnConsultarStands.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         btnConsultarStands.setText("Consultar");
@@ -1047,7 +1047,7 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
 
         jTabbedPane1.addTab("Show Stands", jPanel9);
 
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        TableLibros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null, null, null},
@@ -1066,7 +1066,7 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane7.setViewportView(jTable4);
+        jScrollPane7.setViewportView(TableLibros);
 
         btnConsultarLibros.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         btnConsultarLibros.setText("Consultar");
@@ -1079,8 +1079,8 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
         cmbLibrosShow.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         cmbLibrosShow.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione uno...", "Libros Impresos", "Libros Digitales", "Audiolibros", "Todos los Libros" }));
 
-        jLabel25.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jLabel25.setText("Libros");
+        LabelLibrosShow.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        LabelLibrosShow.setText("Libros");
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -1096,7 +1096,7 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
                         .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 759, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addGap(38, 38, 38)
-                        .addComponent(jLabel25)
+                        .addComponent(LabelLibrosShow)
                         .addGap(18, 18, 18)
                         .addComponent(cmbLibrosShow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(32, Short.MAX_VALUE))
@@ -1107,7 +1107,7 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
                 .addGap(23, 23, 23)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbLibrosShow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel25))
+                    .addComponent(LabelLibrosShow))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 409, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1123,8 +1123,8 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
         cmbAutorConsulta.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         cmbAutorConsulta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione uno..." }));
 
-        jLabel27.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jLabel27.setText("Autor");
+        LabelAutorAdicionales.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        LabelAutorAdicionales.setText("Autor");
 
         btnConsultarAutor.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         btnConsultarAutor.setText("Consultar");
@@ -1134,7 +1134,7 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
             }
         });
 
-        jTable5.setModel(new javax.swing.table.DefaultTableModel(
+        TableLibrosAutores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null, null, null},
@@ -1153,10 +1153,10 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane8.setViewportView(jTable5);
+        jScrollPane8.setViewportView(TableLibrosAutores);
 
-        jLabel28.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jLabel28.setText("Formato");
+        LabelFormatoAdicionales.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        LabelFormatoAdicionales.setText("Formato");
 
         cmbFormatoConsulta.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         cmbFormatoConsulta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione uno...", "Pasta dura", "Pasta blanda", "EPUB", "PDF", "MOBI/AZW", "MP3", "MP4", "WAV", "WMA", "Otro" }));
@@ -1172,7 +1172,7 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
         jLabel29.setFont(new java.awt.Font("Yu Gothic UI", 0, 24)); // NOI18N
         jLabel29.setText("Autores con más Libros en Diferentes Editoriales");
 
-        jTable6.setModel(new javax.swing.table.DefaultTableModel(
+        TableACMLEDE.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -1191,7 +1191,7 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane9.setViewportView(jTable6);
+        jScrollPane9.setViewportView(TableACMLEDE);
 
         btnConsultarAutoresMasLibros.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         btnConsultarAutoresMasLibros.setText("Consultar");
@@ -1212,13 +1212,13 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
                         .addComponent(jLabel26)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addComponent(jLabel27)
+                        .addComponent(LabelAutorAdicionales)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmbAutorConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnConsultarAutor)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-                        .addComponent(jLabel28)
+                        .addComponent(LabelFormatoAdicionales)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmbFormatoConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -1247,10 +1247,10 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
                 .addComponent(jLabel26)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel27)
+                    .addComponent(LabelAutorAdicionales)
                     .addComponent(cmbAutorConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnConsultarAutor)
-                    .addComponent(jLabel28)
+                    .addComponent(LabelFormatoAdicionales)
                     .addComponent(cmbFormatoConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnConsultarFormato))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1279,7 +1279,7 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 616, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1)
                 .addContainerGap())
         );
 
@@ -1297,9 +1297,9 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtPrecioStandoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioStandoActionPerformed
+    private void txtPrecioStandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioStandActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtPrecioStandoActionPerformed
+    }//GEN-LAST:event_txtPrecioStandActionPerformed
 
     private void txtIDStandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDStandActionPerformed
         // TODO add your handling code here:
@@ -1317,17 +1317,17 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
         // TODO add your handling code here:
     }//GEN-LAST:event_txtApellidoPersonaActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void txtNITEditorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNITEditorialActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_txtNITEditorialActionPerformed
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void txtNombreEditorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreEditorialActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+    }//GEN-LAST:event_txtNombreEditorialActionPerformed
 
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+    private void txtDireccionEditorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionEditorialActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
+    }//GEN-LAST:event_txtDireccionEditorialActionPerformed
 
     private void txtTituloLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTituloLibroActionPerformed
         // TODO add your handling code here:
@@ -1415,7 +1415,7 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
 
     private void btnCrearStandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearStandActionPerformed
         String idStr = txtIDStand.getText();
-        String priceStr = txtPrecioStando.getText();
+        String priceStr = txtPrecioStand.getText();
 
         Response response = standController.createStand(idStr, priceStr);
 
@@ -1427,7 +1427,7 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
             javax.swing.JOptionPane.showMessageDialog(this, response.getMessage(), "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
 
             txtIDStand.setText("");
-            txtPrecioStando.setText("");
+            txtPrecioStand.setText("");
 
             refreshStandCombos();
         }
@@ -1498,11 +1498,11 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
 
     private void btnCrearEditorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearEditorialActionPerformed
         // TODO add your handling code here:
-        String nit = jTextField6.getText();
-        String name = jTextField7.getText();
-        String address = jTextField8.getText();
+        String nit = txtNITEditorial.getText();
+        String name = txtNombreEditorial.getText();
+        String address = txtDireccionEditorial.getText();
 
-        String managerSelection = (String) jComboBox1.getSelectedItem();
+        String managerSelection = (String) cmbGerenteEditorial.getSelectedItem();
 
         String managerIdStr;
 
@@ -1521,10 +1521,10 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, response.getMessage(), "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
 
-            jTextField6.setText("");
-            jTextField7.setText("");
-            jTextField8.setText("");
-            jComboBox1.setSelectedIndex(0);
+            txtNITEditorial.setText("");
+            txtNombreEditorial.setText("");
+            txtDireccionEditorial.setText("");
+            cmbGerenteEditorial.setSelectedIndex(0);
 
             refreshPublisherCombos();
         }
@@ -1625,8 +1625,8 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
             return;
         }
 
-        if (!jTextArea3.getText().contains(selected)) {
-            jTextArea3.append(selected + "\n");
+        if (!AreaStands.getText().contains(selected)) {
+            AreaStands.append(selected + "\n");
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "El elemento ya fue agregado.");
         }
@@ -1635,7 +1635,7 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
     private void btnEliminarStandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarStandActionPerformed
         // TODO add your handling code here:
         String stand = cmbIDStands.getItemAt(cmbIDStands.getSelectedIndex());
-        jTextArea3.setText(jTextArea3.getText().replace(stand + "\n", ""));
+        AreaStands.setText(AreaStands.getText().replace(stand + "\n", ""));
     }//GEN-LAST:event_btnEliminarStandActionPerformed
 
     private void btnAgregarEditorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarEditorialActionPerformed
@@ -1646,8 +1646,8 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
             return;
         }
 
-        if (!jTextArea1.getText().contains(selected)) {
-            jTextArea1.append(selected + "\n");
+        if (!AreaEditoriales.getText().contains(selected)) {
+            AreaEditoriales.append(selected + "\n");
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "El elemento ya fue agregado.");
         }
@@ -1656,7 +1656,7 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
     private void btnEliminarEditorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarEditorialActionPerformed
         // TODO add your handling code here:
         String publisher = cmbEditorialesComprarStand.getItemAt(cmbEditorialesComprarStand.getSelectedIndex());
-        jTextArea1.setText(jTextArea1.getText().replace(publisher + "\n", ""));
+        AreaEditoriales.setText(AreaEditoriales.getText().replace(publisher + "\n", ""));
     }//GEN-LAST:event_btnEliminarEditorialActionPerformed
 
     private void btnComprarStandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComprarStandActionPerformed
@@ -1672,8 +1672,8 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
             javax.swing.JOptionPane.showMessageDialog(this, response.getMessage(), "Aviso", javax.swing.JOptionPane.WARNING_MESSAGE);
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, response.getMessage(), "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-            jTextArea1.setText("");
-            jTextArea3.setText("");
+            AreaEditoriales.setText("");
+            AreaStands.setText("");
             if (cmbIDStands.getItemCount() > 0) {
                 cmbIDStands.setSelectedIndex(0);
             }
@@ -1685,7 +1685,7 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
 
     private void btnConsultarEditorialesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarEditorialesActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        DefaultTableModel model = (DefaultTableModel) TableEditoriales.getModel();
         model.setRowCount(0);
 
         for (Publisher publisher : publisherController.getPublishers()) {
@@ -1701,7 +1701,7 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
 
     private void btnConsultarPersonasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarPersonasActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        DefaultTableModel model = (DefaultTableModel) TablePersonas.getModel();
         model.setRowCount(0);
 
         for (Author author : personController.getAuthors()) {
@@ -1737,7 +1737,7 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
     }//GEN-LAST:event_btnConsultarPersonasActionPerformed
 
     private void btnConsultarStandsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarStandsActionPerformed
-        DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
+        DefaultTableModel model = (DefaultTableModel) TableStands.getModel();
         model.setRowCount(0);
 
         for (Stand stand : standController.getStands()) {
@@ -1772,7 +1772,7 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
 
         long authorId = Long.parseLong(seleccion.split(" - ")[0]);
 
-        DefaultTableModel model = (DefaultTableModel) jTable5.getModel();
+        DefaultTableModel model = (DefaultTableModel) TableLibrosAutores.getModel();
         model.setRowCount(0);
 
         ArrayList<Book> librosFiltrados = bookController.getBooksByAuthor(authorId);
@@ -1786,7 +1786,7 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
     private void btnConsultarFormatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarFormatoActionPerformed
         String formatoBuscado = (String) cmbFormatoConsulta.getSelectedItem();
 
-        DefaultTableModel model = (DefaultTableModel) jTable5.getModel();
+        DefaultTableModel model = (DefaultTableModel) TableLibrosAutores.getModel();
         model.setRowCount(0);
 
         ArrayList<Book> librosFiltrados = bookController.getBooksByFormat(formatoBuscado);
@@ -1798,7 +1798,7 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
 
     private void btnConsultarAutoresMasLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarAutoresMasLibrosActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel) jTable6.getModel();
+        DefaultTableModel model = (DefaultTableModel) TableACMLEDE.getModel();
         model.setRowCount(0);
 
         ArrayList<Author> topAuthors = personController.getAuthorsWithMostBooksInDifferentPublishers();
@@ -1826,12 +1826,12 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
     }
 
     private void refreshManagerCombos() {
-        jComboBox1.removeAllItems();
-        jComboBox1.addItem("Seleccione uno...");
+        cmbGerenteEditorial.removeAllItems();
+        cmbGerenteEditorial.addItem("Seleccione uno...");
 
         for (Manager manager : personController.getManagers()) {
             String item = manager.getId() + " - " + manager.getFullname();
-            jComboBox1.addItem(item);
+            cmbGerenteEditorial.addItem(item);
         }
     }
 
@@ -1865,9 +1865,9 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
             return;
         }
 
-        String currentText = jTextArea2.getText();
+        String currentText = AreaAutorLibro.getText();
         if (!currentText.contains(selected)) {
-            jTextArea2.append(selected + "\n");
+            AreaAutorLibro.append(selected + "\n");
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "El autor ya está en la lista.", "Aviso", javax.swing.JOptionPane.WARNING_MESSAGE);
         }
@@ -1879,10 +1879,10 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
             return;
         }
 
-        String currentText = jTextArea2.getText();
+        String currentText = AreaAutorLibro.getText();
         if (currentText.contains(selected)) {
             String newText = currentText.replace(selected + "\n", "");
-            jTextArea2.setText(newText);
+            AreaAutorLibro.setText(newText);
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "El autor seleccionado no está en la lista.", "Aviso", javax.swing.JOptionPane.WARNING_MESSAGE);
         }
@@ -1890,7 +1890,7 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
 
     private java.util.ArrayList<String> getSelectedAuthorIds() {
         java.util.ArrayList<String> ids = new java.util.ArrayList<>();
-        String text = jTextArea2.getText();
+        String text = AreaAutorLibro.getText();
         if (text.isEmpty()) {
             return ids;
         }
@@ -1909,7 +1909,7 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
         txtTituloLibro.setText("");
         txtISBN.setText("");
         txtValor.setText("");
-        jTextArea2.setText("");
+        AreaAutorLibro.setText("");
         txtNroPaginas.setText("");
         txtNroEjemplares.setText("");
         txtHipervinculo.setText("");
@@ -1935,7 +1935,7 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
     public void refreshBookTable() {
         String filtro = (String) cmbLibrosShow.getSelectedItem();
 
-        javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) jTable4.getModel();
+        javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) TableLibros.getModel();
         model.setRowCount(0);
 
         for (Book book : bookController.getBooks()) {
@@ -1976,7 +1976,7 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
 
     private java.util.ArrayList<String> getSelectedStandIdsForPurchase() {
         java.util.ArrayList<String> ids = new java.util.ArrayList<>();
-        for (String line : jTextArea3.getText().split("\n")) {
+        for (String line : AreaStands.getText().split("\n")) {
             if (!line.trim().isEmpty()) {
                 ids.add(line.trim());
             }
@@ -1986,7 +1986,7 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
 
     private java.util.ArrayList<String> getSelectedPublisherNitsForPurchase() {
         java.util.ArrayList<String> nits = new java.util.ArrayList<>();
-        for (String line : jTextArea1.getText().split("\n")) {
+        for (String line : AreaEditoriales.getText().split("\n")) {
             if (!line.trim().isEmpty()) {
                 if (line.contains("(") && line.contains(")")) {
                     nits.add(line.substring(line.lastIndexOf("(") + 1, line.lastIndexOf(")")));
@@ -2042,6 +2042,41 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea AreaAutorLibro;
+    private javax.swing.JTextArea AreaEditoriales;
+    private javax.swing.JTextArea AreaStands;
+    private javax.swing.JLabel LabelApellidoPersona;
+    private javax.swing.JLabel LabelAutorAdicionales;
+    private javax.swing.JLabel LabelAutoresLibro;
+    private javax.swing.JLabel LabelDireccionEditorial;
+    private javax.swing.JLabel LabelDuraionLibro;
+    private javax.swing.JLabel LabelEditorialLibro;
+    private javax.swing.JLabel LabelEditorialesComprar;
+    private javax.swing.JLabel LabelFormatoAdicionales;
+    private javax.swing.JLabel LabelFormatoLibro;
+    private javax.swing.JLabel LabelGeneroLibro;
+    private javax.swing.JLabel LabelGerenteEditorial;
+    private javax.swing.JLabel LabelHiperLibro;
+    private javax.swing.JLabel LabelIDPersona;
+    private javax.swing.JLabel LabelIDStandsComprar;
+    private javax.swing.JLabel LabelISBNLibro;
+    private javax.swing.JLabel LabelLibrosShow;
+    private javax.swing.JLabel LabelNarradorLibro;
+    private javax.swing.JLabel LabelNombreEditorial;
+    private javax.swing.JLabel LabelNombrePersona;
+    private javax.swing.JLabel LabelNroEjemplaresLibro;
+    private javax.swing.JLabel LabelNroPagLibro;
+    private javax.swing.JLabel LabelPrecioStand;
+    private javax.swing.JLabel LabelTipoLibro;
+    private javax.swing.JLabel LabelTituloLibro;
+    private javax.swing.JLabel LabelValorLibro;
+    private javax.swing.JLabel LaberNITEditorial;
+    private javax.swing.JTable TableACMLEDE;
+    private javax.swing.JTable TableEditoriales;
+    private javax.swing.JTable TableLibros;
+    private javax.swing.JTable TableLibrosAutores;
+    private javax.swing.JTable TablePersonas;
+    private javax.swing.JTable TableStands;
     private javax.swing.JButton btnAgregarAutor;
     private javax.swing.JButton btnAgregarEditorial;
     private javax.swing.JButton btnComprarStand;
@@ -2069,39 +2104,12 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
     private javax.swing.JComboBox<String> cmbFormato;
     private javax.swing.JComboBox<String> cmbFormatoConsulta;
     private javax.swing.JComboBox<String> cmbGenero;
+    private javax.swing.JComboBox<String> cmbGerenteEditorial;
     private javax.swing.JComboBox<String> cmbIDStands;
     private javax.swing.JComboBox<String> cmbLibrosShow;
     private javax.swing.JComboBox<String> cmbNarrador;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -2123,31 +2131,23 @@ public class MegaferiaFrame extends javax.swing.JFrame implements PropertyChange
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JTable jTable4;
-    private javax.swing.JTable jTable5;
-    private javax.swing.JTable jTable6;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextArea jTextArea3;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
+    private javax.swing.JLabel labelIDStand;
     private javax.swing.JRadioButton rAudioLibro;
     private javax.swing.JRadioButton rDigital;
     private javax.swing.JRadioButton rImpreso;
     private javax.swing.JTextField txtApellidoPersona;
+    private javax.swing.JTextField txtDireccionEditorial;
     private javax.swing.JTextField txtDuracion;
     private javax.swing.JTextField txtHipervinculo;
     private javax.swing.JTextField txtIDPersona;
     private javax.swing.JTextField txtIDStand;
     private javax.swing.JTextField txtISBN;
+    private javax.swing.JTextField txtNITEditorial;
+    private javax.swing.JTextField txtNombreEditorial;
     private javax.swing.JTextField txtNombrePersona;
     private javax.swing.JTextField txtNroEjemplares;
     private javax.swing.JTextField txtNroPaginas;
-    private javax.swing.JTextField txtPrecioStando;
+    private javax.swing.JTextField txtPrecioStand;
     private javax.swing.JTextField txtTituloLibro;
     private javax.swing.JTextField txtValor;
     // End of variables declaration//GEN-END:variables

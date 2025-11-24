@@ -44,30 +44,41 @@ public class StandController {
     }
 
     public Response assignStandsToPublishers(ArrayList<String> standIds, ArrayList<String> publisherNits) {
-        if (standIds.isEmpty() || publisherNits.isEmpty()) {
-            return new Response("Debe seleccionar Stands y Editoriales.", Status.BAD_REQUEST);
+        if (standIds == null || standIds.isEmpty() || publisherNits == null || publisherNits.isEmpty()) {
+            return new Response("Debe seleccionar al menos un Stand y una Editorial.", Status.BAD_REQUEST);
         }
 
         ArrayList<Stand> standsToBuy = new ArrayList<>();
         ArrayList<Publisher> buyers = new ArrayList<>();
 
-        // Validar existencia
-        for (String sid : standIds) {
-            Stand s = findStand(Long.parseLong(sid));
-            if (s != null) {
-                standsToBuy.add(s);
+        try {
+            for (String sid : standIds) {
+                Stand s = findStand(Long.parseLong(sid));
+                if (s != null) {
+                    standsToBuy.add(s);
+                }
             }
+            for (String nit : publisherNits) {
+                Publisher p = findPublisher(nit);
+                if (p != null) {
+                    buyers.add(p);
+                }
+            }
+        } catch (NumberFormatException e) {
+            return new Response("Error en el formato de los IDs seleccionados.", Status.BAD_REQUEST);
         }
-        for (String nit : publisherNits) {
-            Publisher p = findPublisher(nit);
-            if (p != null) {
-                buyers.add(p);
-            }
+
+        if (standsToBuy.isEmpty() || buyers.isEmpty()) {
+            return new Response("No se encontraron los Stands o Editoriales especificados.", Status.BAD_REQUEST);
         }
 
         for (Stand s : standsToBuy) {
             for (Publisher p : buyers) {
-                s.getPublishers().add(p);
+                if (!s.getPublishers().contains(p)) {
+
+                    s.getPublishers().add(p);
+                    p.addStand(s);
+                }
             }
         }
 
